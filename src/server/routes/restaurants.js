@@ -3,17 +3,13 @@ const router = express.Router();
 const knex = require('../db/knex');
 const genres = require('../genres.json');
 
-function restaurants() { return knex('restaurants'); }
+// function restaurants() { return knex('restaurants'); }
 
 router.get('/', function (req, res, next) {
-  restaurants().select().then(records => {
-    res.render('restaurant_pages', {
-      title: 'Restaurants',
-      restaurants: records
-    });
+  res.render('restaurant_pages.html', {
+    title: 'Restaurants'
   });
-
-
+});
 
 router.get('/new', (req, res, next) => {
 

@@ -13,6 +13,7 @@
     app.use('/', routes);
     app.use('/api/v1/restaurants', restaurantsRoutes);
     app.use('/api/v1/users', usersRoutes);
+    app.use('/', routes);
 
   };
 
