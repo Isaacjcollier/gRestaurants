@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const knex = require('../db/knex');
-//const genres = require('../genres.json');
+const genres = require('../genres.json');
 
 function restaurants() { return knex('restaurants'); }
 
@@ -21,14 +21,14 @@ router.get('/new', (req, res, next) => {
   .then(restaurants => {
       res.render('restaurants/new', {
         title: 'New Restaurant',
-        genres: genre
+        genres: genres
       });
     });
 });
 
 router.get('/view/:id', (req, res, next) => {
 
-  restaurant_id = parseInt(req.params.id);
+  var restaurant_id = parseInt(req.params.id);
 
   restaurants()
   .select()
@@ -41,3 +41,5 @@ router.get('/view/:id', (req, res, next) => {
     });
   });
 });
+
+module.exports = router;
