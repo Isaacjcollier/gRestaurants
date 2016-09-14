@@ -6,9 +6,14 @@ $(document).ready(function () {
 });
 
 function checkValidation() {
-  if ($('#name').val()) {
-    console.log('hi');
-  } else {
-    console.log('need a name');
-  }
+  let valid = ['.name', '.city', '.image'].every(className => {
+    return !!$(className).val();
+  });
+
+  console.log(valid);
+  // if ((!!$('.name').val()) || (!!$('.city').val())) {
+  //   $('#myModal').modal({
+  //     show: true
+  //   });
+  // }
 }

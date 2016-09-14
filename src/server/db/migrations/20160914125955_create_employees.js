@@ -3,7 +3,7 @@ exports.up = function(knex, Promise) {
     table.increments();
     table.string('name').notNullable();
     table.string('role').notNullable();
-    table.string('restaurant_id').notNullable();
+    table.string('restaurant_id');
   });
 };
 
