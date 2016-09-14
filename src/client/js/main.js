@@ -1,5 +1,14 @@
-(function () {
+$(document).ready(function () {
+  $('.check').on('submit', function(e) {
+    e.preventDefault();
+    checkValidation();
+  })
+})
 
-  console.log('sanity check!');
-
-})();
+function checkValidation() {
+  if ($('#name').val()) {
+    console.log('hi');
+  } else {
+    console.log('need a name');
+  }
+}
