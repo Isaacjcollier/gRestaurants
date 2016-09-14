@@ -2,8 +2,8 @@ $(document).ready(function () {
   $('.check').on('submit', function(e) {
     e.preventDefault();
     checkValidation();
-  })
-})
+  });
+});
 
 function checkValidation() {
   if ($('#name').val()) {
