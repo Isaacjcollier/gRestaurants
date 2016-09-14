@@ -7,10 +7,10 @@ $(document).ready(function () {
 
 function checkValidation() {
   let valid = ['.name', '.city', '.image'].every(className => {
-    return !!$(className).val()
-  })
+    return !!$(className).val();
+  });
 
-  console.log(valid)
+  console.log(valid);
   // if ((!!$('.name').val()) || (!!$('.city').val())) {
   //   $('#myModal').modal({
   //     show: true
