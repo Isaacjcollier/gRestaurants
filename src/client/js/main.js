@@ -6,7 +6,9 @@ $(document).ready(function () {
 })
 
 function checkValidation() {
-  if ($('.name').val() === 'undefined') {
+  if ($('#name').val()) {
     console.log('hi');
+  } else {
+    console.log('need a name');
   }
 }
