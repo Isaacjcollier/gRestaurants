@@ -1,19 +1,17 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>register page</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-    <link rel="stylesheet" href="restaurant_page.css">
-  </head>
-  <body>
+{% extends '_base.html' %}
+
+{% block title %}{% endblock %}
+
+
+{% block content %}
+
     <div class="row">
 
       <div class="container" >
 
         <div class="col-md-6 box">
-          <img src="../images/fine-dining.jpeg">
-          <img src="../images/london-map.png" style="height:200px; background-color: #235;">
+          <img class="restaurant-image" src="../images/fine-dining.jpeg">
+          <img class="restaurant-image" src="../images/london-map.png" style="height:200px; background-color: #235;">
           <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...
           </p>
@@ -24,8 +22,8 @@
         </div>
 
         <div class="col-md-6 box">
-          <img src="../images/bbq.jpg">
-          <img src="../images/london-map.png" style="height:200px; background-color: #235;">
+          <img class="restaurant-image" src="../images/bbq.jpg">
+          <img class="restaurant-image" src="../images/london-map.png" style="height:200px; background-color: #235;">
           <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...
           </p>
@@ -36,8 +34,8 @@
 
         </div>
         <div class="col-md-6 box">
-          <img src="../images/mexican.jpeg">
-          <img src="../images/london-map.png" class="location" style="height:200px; background-color: #235;">
+          <img class="restaurant-image" src="../images/mexican.jpeg">
+          <img class="restaurant-image" src="../images/london-map.png" class="location" style="height:200px; background-color: #235;">
           <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...
           </p>
@@ -48,8 +46,8 @@
 
         </div>
         <div class="col-md-6 box">
-          <img src="../images/italian.jpg">
-          <img src="../images/london-map.png" style="height:200px; background-color: #235;">
+          <img class="restaurant-image" src="../images/italian.jpg">
+          <img class="restaurant-image" src="../images/london-map.png" style="height:200px; background-color: #235;">
           <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...
           </p>
@@ -60,8 +58,8 @@
         </div>
 
         <div class="col-md-6 box">
-          <img src="../images/mongolian.jpeg">
-          <img src="../images/london-map.png" style="height:200px; background-color: #235;">
+          <img class="restaurant-image" src="../images/mongolian.jpeg">
+          <img class="restaurant-image" src="../images/london-map.png" style="height:200px; background-color: #235;">
           <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...
           </p>
@@ -74,5 +72,5 @@
       </div>
 
     </div>
-  </body>
-</html>
+
+{% endblock %}
