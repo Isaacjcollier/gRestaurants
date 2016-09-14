@@ -1,5 +1,12 @@
-(function () {
+$(document).ready(function () {
+  $('.check').on('submit', function(e) {
+    e.preventDefault();
+    checkValidation();
+  })
+})
 
-  console.log('sanity check!');
-
-})();
+function checkValidation() {
+  if ($('.name').val() === 'undefined') {
+    console.log('hi');
+  }
+}
