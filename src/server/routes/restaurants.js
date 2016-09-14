@@ -7,12 +7,13 @@ function restaurants() { return knex('restaurants'); }
 
 router.get('/', function (req, res, next) {
   restaurants().select().then(records => {
-    res.render('restaurants/', {
+    res.render('restaurant_pages', {
       title: 'Restaurants',
       restaurants: records
     });
   });
-});
+
+
 
 router.get('/new', (req, res, next) => {
 
