@@ -6,8 +6,7 @@ exports.up = function(knex, Promise) {
     table.string('city').notNullable();
     table.string('state').notNullable();
     table.string('zip').notNullable();
-    table.string('genre').notNullable();
-    table.string('image_path').notNullable();
+    table.string('cuisine').notNullable();
     table.string('description').notNullable();
   });
 };
