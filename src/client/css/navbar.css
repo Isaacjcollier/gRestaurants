@@ -1,0 +1,50 @@
+.navbar {
+  height: 200px;
+  background-color: #2D2D2D;
+  background-image: url("https://d13yacurqjgara.cloudfront.net/users/72697/screenshots/682962/400_300.jpg");
+  background-repeat: no-repeat;
+}
+
+.nav-header {
+  font-weight: bolder;
+  font-size: 4em;
+  color: orange;
+  float: left;
+  margin-left: 30%;
+}
+
+.nav-list {
+  margin-top: 150px;
+}
+
+.navigate {
+  display: inline;
+  margin: 0;
+}
+
+.navigate-a {
+  font-size: 2em;
+  margin-left: 10%;
+  color: orange;
+}
+
+.navigate-a:hover {
+  color: black;
+}
+
+.sign-up, .sign-in {
+  float: right;
+  margin: 10px;
+  width: 8%;
+  border-radius: 10px;
+  color: white;
+  font-size: 1.5em;
+}
+
+.sign-up {
+  background-color: green;
+}
+
+.sign-in {
+  background-color: blue;
+}

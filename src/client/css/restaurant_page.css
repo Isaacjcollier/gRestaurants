@@ -1,0 +1,36 @@
+.restaurant-image {
+  padding: 10px;
+  width:250px;
+  height:240px;
+  border-radius:20%;
+}
+
+.box {
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color:white;
+  border-style: dashed;
+  border-color: black;
+
+}
+
+body {
+  background-color: #379;
+}
+
+.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+}
+
+.rating > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+}
+
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
+   content: "\2605";
+   position: absolute;
+}

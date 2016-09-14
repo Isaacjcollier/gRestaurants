@@ -1,0 +1,63 @@
+<!-- navbar start -->
+<nav class="navbar col-12">
+  
+  <button class="sign-up" id="sign-up" type="submit" data-toggle="modal" data-target="#myModal-sign-up">Sign Up</button>
+
+  <button class="sign-in" id="sign-in" type="submit" data-toggle="modal" data-target="#myModal-sign-in">Sign In</button>
+
+  <h1 class="nav-header">Gelp</h1>
+  <ul class="nav-list">
+    <li class="navigate"><a class="navigate-a" href="#">Home</a></li>
+    <li class="navigate"><a class="navigate-a" href="#">Restaurants</a></li>
+    <li class="navigate"><a class="navigate-a" href="#">Another Link</a></li>
+    <li class="navigate"><a class="navigate-a" href="#">Another Link</a></li>
+    <li class="navigate"><a class="navigate-a" href="#">Another Link</a></li>
+  </ul>
+</nav>
+<!-- navbar end -->
+
+<!-- navbar sign-up modal start -->
+<div class="modal fade" id="myModal-sign-up" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form id="modal-form">
+          <div class="form-group">
+            <input type="email" class="form-control" name="email" id="input-user-email" placeholder="Email Address"><br>
+
+            <input type="text" class="form-control" name="username" id="input-username" placeholder="User Name"><br>
+
+            <input type="password" class="form-control" name="password" id="input-new-password" placeholder="Enter New Password"><br>
+
+            <input type="password" class="form-control" name="varify-password" id="input-verify-password" placeholder="Verify Password">
+          </div>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" id="sign-up-modal" class="btn btn-primary">Sign Up</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- navbar sign-up modal end -->
+
+<!-- navbar sign-in modal start -->
+<div class="modal fade" id="myModal-sign-in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form id="modal-form">
+          <div class="form-group">
+            <input type="text" class="form-control" name="username" id="input-username" placeholder="User Name"><br>
+
+            <input type="password" class="form-control" name="password" id="input-password" placeholder="Password">
+          </div>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" id="modal-sign-in" class="btn btn-primary">Sign In</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- navbar sign-in modal end -->
