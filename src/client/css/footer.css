@@ -1,0 +1,32 @@
+.foot-contain {
+  height: 50px;
+  background-color: #2D2D2D;
+  width: 100%;
+}
+
+.footer-list-start {
+  width: 100%;
+  text-align: center;
+}
+
+.footer-list {
+  display: inline;
+  font-size: 2em;
+  margin-left: 3%;
+  border-left: 8px solid orange;
+}
+
+.footer-a {
+  text-decoration: none;
+  color: white;
+}
+
+.footer-a:hover {
+  color: orange;
+}
+
+.gelp-rights {
+  height: 50px;
+  color: white;
+  font-size: 2em;
+}
