@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const knex = require('../db/knex');
 const genres = require('../genres.json');
+const validation = require('./validation');
 
 // function restaurants() { return knex('restaurants'); }
 
@@ -81,6 +82,37 @@ router.get('/new', (req, res, next) => {
     });
 });
 
+//render restaurant new
+router.get('/new', (req, res, next) => {
+  res.render('restaurant_admin_add');
+});
+
+//post restaurant new
+router.post('/new', validation.checkValidation, (req, res, next) => {
+  const name = req.body.name;
+  const street = req.body.street;
+  const city = req.body.city;
+  const state = req.body.state;
+  const zip = req.body.zip;
+  const cuisine = req.body.cuisine;
+  const description = req.body.description;
+  knex('restaurant')
+  .insert({
+    name: name,
+    street: street,
+    city: city,
+    state: state,
+    zip: zip,
+    cuisine: cuisine,
+    description: description
+  }, '*')
+  .then(() => {
+    res.redirect('/new');
+  })
+  .catch((err) => {
+    res.status(500);
+  });
+});
 
 router.get('/1', (req, res, next) => {
   res.render('single_restaurant');
