@@ -1,19 +1,16 @@
 $(document).ready(function () {
-  $('.check').on('submit', function(e) {
+  $('.add').click('submit', function(e) {
     e.preventDefault();
-    checkValidation();
   });
 });
 
 function checkValidation() {
-  let valid = ['.name', '.city', '.image'].every(className => {
+  let valid = ['.name', '.city', '.street', '.city', 'zip'].every(className => {
     return !!$(className).val();
   });
-
-  console.log(valid);
-  // if ((!!$('.name').val()) || (!!$('.city').val())) {
-  //   $('#myModal').modal({
-  //     show: true
-  //   });
-  // }
+  if (!valid) {
+    $('#myModal').modal({
+      show: true
+    });
+  }
 }
