@@ -70,18 +70,6 @@ router.put('/:id/edit', (req, res, next) => {
     });
 });
 
-router.get('/new', (req, res, next) => {
-
-  restaurants()
-  .select()
-  .then(restaurants => {
-      res.render('restaurants/new', {
-        title: 'New Restaurant',
-        genres: genres
-      });
-    });
-});
-
 //render restaurant new
 router.get('/new', (req, res, next) => {
   res.render('restaurant_admin_add');
@@ -97,6 +85,7 @@ router.post('/new', validation.checkValidation, (req, res, next) => {
   const zip = req.body.zip;
   const cuisine = req.body.cuisine;
   const description = req.body.description;
+  const picture_url = req.body.picture;
   knex('restaurants')
   .insert({
     name: name,
@@ -105,7 +94,8 @@ router.post('/new', validation.checkValidation, (req, res, next) => {
     state: state,
     zip: zip,
     cuisine: cuisine,
-    description: description
+    description: description,
+    picture_url: picture_url
   }, '*')
   .then((results) => {
     if (results.length) {

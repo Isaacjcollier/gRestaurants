@@ -3,7 +3,9 @@ function checkValidation(req, res, next) {
   const city = req.body.city;
   const street = req.body.street;
   const zip = req.body.zip;
-  const arr = [name, city, street, zip];
+  const description = req.body.description;
+  const picture_url = req.body.picture;
+  const arr = [name, city, street, zip, description, picture_url];
   function check(el, index, arr) {
     return (el !== '');
   }
