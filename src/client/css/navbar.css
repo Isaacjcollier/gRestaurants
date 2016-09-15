@@ -15,6 +15,7 @@
 
 .nav-list {
   margin-top: 150px;
+  margin-left: 30%;
 }
 
 .navigate {
@@ -26,10 +27,11 @@
   font-size: 2em;
   margin-left: 10%;
   color: orange;
+  border-left: 10px solid orange;
 }
 
 .navigate-a:hover {
-  color: black;
+  color: white;
 }
 
 .sign-up, .sign-in {

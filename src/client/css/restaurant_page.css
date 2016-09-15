@@ -1,17 +1,37 @@
 .restaurant-image {
   padding: 10px;
-  width:250px;
-  height:240px;
+  width: 230px;
+  height: 175px;
   border-radius:20%;
+  background-color: #235;
+  float: left;
 }
 
 .box {
-  padding-left: 10px;
-  padding-right: 10px;
   background-color:white;
-  border-style: dashed;
-  border-color: black;
+  border: 5px solid black;
+  float: left;
+  height: 500px;
+  padding-left: 1%;
+}
 
+.description {
+  margin: 0;
+}
+
+.edit-restaurant, .del-restaurant {
+  border-radius: 25px;
+  box-shadow: 10px 10px 5px #888888;
+  color: white;
+  margin-bottom: 5%;
+}
+
+.edit-restaurant {
+  background-color: blue;
+}
+
+.del-restaurant {
+  background-color: red;
 }
 
 /*body {
@@ -21,6 +41,7 @@
 .rating {
   unicode-bidi: bidi-override;
   direction: rtl;
+  padding-right: 3%;
 }
 
 .rating > span {
@@ -33,4 +54,9 @@
 .rating > span:hover ~ span:before {
    content: "\2605";
    position: absolute;
+}
+
+.special-font {
+/*font-family: 'Black Ops One', cursive;*/
+font-family: 'Luckiest Guy', cursive;
 }
