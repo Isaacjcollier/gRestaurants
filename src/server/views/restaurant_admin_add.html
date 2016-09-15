@@ -3,12 +3,11 @@
 {% block content %}
 
 {% include './_navbar.html' %}
-
-{{ error }}
 <!-- Form Validation -->
 
 <div class="container">
   <h1 class="special-font">CREATE RESTAURANT</h1>
+  <h2> {{ error }} </h2>
   <hr>
   <form method="POST" action="/api/v1/restaurants/new">
     <div class="form-group">
@@ -85,7 +84,7 @@
       <input type="text"  pattern="^\d{5}$" class="form-control zip" placeholder="Zip Code" name="zip">
     </div>
     <div class="form-group">
-    <p>Cuisine:</p>
+    <p class="special-font">Cuisine:</p>
     <select class="form-control" name="cuisine">
       <option value="American">American</option>
       <option value="bbq">bbq</option>
@@ -97,12 +96,8 @@
   </div>
   <br>
   <div class="form-group">
-    <p>Description:</p>
-    <textarea class="form-control" rows="5" name="description"></textarea>
-  </div>
-  <button type="submit" class="btn btn-default">Submit</button>
-  <a href="/api/v1/restaurants" button type="button" class="btn btn-default">Cancel</button>
-</form>
+    <p class="special-font">Picture URL:</p>
+    <input type="text" class="form-control" placeholder="Picture URL" name="picture">
     <br>
     <div class="form-group">
       <p class="special-font">Description:</p>

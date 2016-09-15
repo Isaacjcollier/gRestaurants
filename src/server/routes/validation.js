@@ -1,3 +1,4 @@
+// add new restaurant validation
 function checkValidation(req, res, next) {
   const name = req.body.name;
   const city = req.body.city;
@@ -12,7 +13,7 @@ function checkValidation(req, res, next) {
   const valid = arr.every(check);
   const errorMessage = [];
   if (!valid) {
-    errorMessage.push('please');
+    errorMessage.push('All feilds are required!');
     const renderObject = {};
     renderObject.error = errorMessage;
     // { error: ['some message'] }
