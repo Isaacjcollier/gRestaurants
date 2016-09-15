@@ -19,8 +19,6 @@ router.get('/', (req, res, next) => {
   });
 });
 
-
-
 //update restaurant route
 router.put('/:id/edit', (req, res, next) => {
   //PUT object body
@@ -114,16 +112,16 @@ router.post('/new', validation.checkValidation, (req, res, next) => {
 });
 
 router.get('/:id', (req, res, next) => {
-  const restaurantId = parseInt(req.params.id)
+  const restaurantId = parseInt(req.params.id);
   knex('restaurants')
   .select('*')
   .where('id', restaurantId)
   .then((results) => {
-    const singleRestaurantObject = {}
+    const singleRestaurantObject = {};
 
-    singleRestaurantObject.restaurantz = results
+    singleRestaurantObject.restaurantz = results;
     res.render('single_restaurant', singleRestaurantObject);
-  })
+  });
 
 });
 
