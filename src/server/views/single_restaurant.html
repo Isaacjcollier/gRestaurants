@@ -8,27 +8,31 @@
 {% include './_navbar.html' %}
 
   <div class="container">
+    {% for restaurant in restaurantz %}
     <div class="col-md-6 single-box-restaurant">
-      <h2 class="special-font">Bubba's BBQ and Grill</h2>
-      <img src="/images/bbq.jpg" alt="bbq restaurant photo" style="height:350px; width:470px;" />
+      <h2 class="special-font">{{restaurant.name}}</h2>
+      <img src="{{restaurant.picture_url}}" alt="bbq restaurant photo" style="height:350px; width:470px;" />
       <h4>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        {{restaurant.description}}
       </h4>
       <img class="restaurant-map-image" src="/images/london-map.png" style="height:200px; background-color: #235;">
       <div class="company-address">
         <h4 class="special-font">Address:</h4>
-        <br>
-        <h5 class="special-font">123 N. deleware St, Colorado Springs, Colorado</h5>
+        <h5 class="special-font">street: {{restaurant.street}}</h5>
+        <h5 class="special-font">city: {{restaurant.city}}</h5>
+        <h5 class="special-font">state: {{restaurant.state}}</h5>
+        <h5 class="special-font">zip: {{restaurant.zip}}</h5>
       </div>
-      <h3 class="special-font">Cuisine Type: BBQ</h3>
+      <h3 class="special-font">Cuisine Type:{{restaurant.cuisine}}</h3>
       <div class="rating rating-position">
       <h3>Consumer rating</h3>
       <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
       </div>
+      {% endfor %}
     </div>
 
       <!-- employees -->
-      <table>
+      <!-- <table>
         <thead>
           <tr>
             <th>Employee Name</th>
@@ -43,7 +47,7 @@
             </tr>
           {% endfor %}
         </tbody>
-      </table>
+      </table> -->
 
     <!-- reviews go here -->
     <div class="col-md-6">
