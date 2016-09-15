@@ -13,7 +13,7 @@
     <p class="restaurant-title">{{restaurant.name}}</p>
     <img class="restaurant-image" src="{{restaurant.picture_url}}">
     <img class="col-1 restaurant-image" src="/images/london-map.png">
-      <p class="description">{{restaurant.name}}</p>
+      <p class="description">{{restaurant.cuisine}}</p>
       <p class="description">{{restaurant.street}}</p>
       <p class="description">{{restaurant.city}}</p>
       <p class="description">{{restaurant.state}}</p>
@@ -24,7 +24,7 @@
         <h3 class="description">some rating</h3>
       <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
     </div>
-    <button type="button" class="edit-restaurant" id="edit-restaurant" data-toggle="modal" data-target="#myModal-edit" data-image="{{restaurant.picture_url}}" data-name="{{restaurant.name}}" data-street="{{restaurant.street}}" data-city="{{restaurant.city}}" data-state="{{restaurant.state}}" data-zipcode="{{restaurant.zip}}" data-id="{{restaurant.id}}" data-description="{{restaurant.description}}">EDIT</button>
+    <button type="button" class="edit-restaurant" id="edit-restaurant" data-toggle="modal" data-target="#myModal-edit" data-image="{{restaurant.picture_url}}" data-name="{{restaurant.name}}" data-cuisine="{{restaurant.cuisine}}" data-street="{{restaurant.street}}" data-city="{{restaurant.city}}" data-state="{{restaurant.state}}" data-zipcode="{{restaurant.zip}}" data-id="{{restaurant.id}}" data-description="{{restaurant.description}}">EDIT</button>
     <button type="button" class="del-restaurant" id="delete-restaurant" data-toggle="modal" data-target="#myModal-delete" data-id="{{restaurant.id}}">DELETE</button>
   </div>
 {% endfor %}
@@ -41,6 +41,9 @@
           </div>
           <div class="form-group">
             <input type="text" class="form-control" name="name" id="input-name">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="name" id="input-cuisine">
           </div>
           <div class="form-group">
             <input type="text" class="form-control" name="street" id="input-street">
