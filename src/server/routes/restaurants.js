@@ -23,7 +23,7 @@ router.get('/', (req, res, next) => {
 //
 
 router.get('/1', (req, res, next) => {
-  res.render();
+  res.render('single_restaurant');
 });
 
 // router.get('/view/:id', (req, res, next) => {

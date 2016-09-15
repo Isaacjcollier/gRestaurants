@@ -9,7 +9,7 @@
   padding-left: 10px;
   padding-right: 10px;
   background-color:white;
-  border-style: dashed;
+  border-style: solid;
   border-color: black;
 
 }
@@ -33,4 +33,8 @@
 .rating > span:hover ~ span:before {
    content: "\2605";
    position: absolute;
+}
+.special-font {
+/*font-family: 'Black Ops One', cursive;*/
+font-family: 'Luckiest Guy', cursive;
 }
