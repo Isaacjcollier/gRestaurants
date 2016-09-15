@@ -58,7 +58,7 @@ router.put('/:id/edit', (req, res, next) => {
         res.status(404).json({
           status: 'error',
           message: 'That id does not exsist'
-        })
+        });
       }
     })
     .catch((err) => {

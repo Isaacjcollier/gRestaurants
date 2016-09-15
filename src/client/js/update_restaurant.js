@@ -15,7 +15,7 @@
     const $restaurantID = $(this).attr('data-id');
     $('#input-picture-url').attr('value', $pictureURL);
     $('#input-name').attr('value', $restaurantName);
-    $('#input-cuisine').attr('value', $restaurantCuisine)
+    $('#input-cuisine').attr('value', $restaurantCuisine);
     $('#input-street').attr('value', $restaurantStreet);
     $('#input-city').attr('value', $restaurantCity);
     $('#input-state').attr('value', $restaurantState);
