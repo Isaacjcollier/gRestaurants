@@ -3,8 +3,8 @@ exports.up = function(knex, Promise) {
     table.increments();
     table.string('user_rating').notNullable();
     table.string('user_review').notNullable();
-    table.timestamp('date_entered').notNullable();
-    table.string('user_id').notNullable();
+    table.string('user_id').references('id').inTable('users').notNullable();
+    table.timestamp('created_at').defaultTo(knex.fn.now());
   });
 };
 

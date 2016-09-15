@@ -71,4 +71,8 @@
     $('#input-id-delete').attr('value', $deleteRestaurantID);
   });
 
+  $()
+
+
+
 })();

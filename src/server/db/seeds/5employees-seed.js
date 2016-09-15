@@ -7,27 +7,33 @@ exports.seed = function(knex, Promise) {
         // Inserts seed entries
         knex('employees').insert({
           name: 'Will Billiams',
-          role: 'Head Chef'
+          role: 'Head Chef',
+          restaurant_id: 1
         }),
         knex('employees').insert({
           name: 'Frank Sinatra',
-          role: 'Entertainer'
+          role: 'Entertainer',
+          restaurant_id: 2
         }),
         knex('employees').insert({
           name: 'Etta James',
-          role: 'Hostess'
+          role: 'Hostess',
+          restaurant_id: 3
         }),
         knex('employees').insert({
           name: 'Scary Dan',
-          role: 'Dishwasher'
+          role: 'Dishwasher',
+          restaurant_id: 4
         }),
         knex('employees').insert({
           name: 'Fred Felon',
-          role: 'Line Cook'
+          role: 'Line Cook',
+          restaurant_id: 5
         }),
         knex('employees').insert({
           name: 'Toshiro Mifune',
-          role: 'Bouncer'
+          role: 'Bouncer',
+          restaurant_id: 6
         })
       ]);
     });
