@@ -20,6 +20,20 @@
   margin: 0;
 }
 
+.edit-restaurant, .del-restaurant {
+  border-radius: 25px;
+  box-shadow: 10px 10px 5px #888888;
+  color: white;
+}
+
+.edit-restaurant {
+  background-color: blue;
+}
+
+.del-restaurant {
+  background-color: red;
+}
+
 /*body {
   background-color: #379;
 }*/

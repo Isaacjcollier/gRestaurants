@@ -11,7 +11,6 @@ router.get('/', (req, res, next) => {
     const renderObject = {};
     renderObject.restaurants = results;
     res.render('restaurant_pages', renderObject);
-    console.log(results);
   });
 });
 
