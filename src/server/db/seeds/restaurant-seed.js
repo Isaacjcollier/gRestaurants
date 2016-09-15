@@ -13,7 +13,8 @@ exports.seed = function(knex, Promise) {
           state: 'Colorado',
           zip: '80200',
           cuisine: 'bbq',
-          description: 'lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+          description: 'lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+          picture_url: '/images/bbq.jpg'
         }),
         knex('restaurants').insert({
           // fine-dining
@@ -23,7 +24,8 @@ exports.seed = function(knex, Promise) {
           state: 'California',
           zip: '9491',
           cuisine: 'Fine Dining',
-          description: 'House of the house, like a boss.'
+          description: 'House of the house, like a boss.',
+          picture_url: '/images/fine-dining.jpeg'
         }),
         knex('restaurants').insert({
           // italian
@@ -33,7 +35,8 @@ exports.seed = function(knex, Promise) {
           state: 'New York',
           zip: '01012',
           cuisine: 'Italian',
-          description: 'lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.'
+          description: 'lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
+          picture_url: '/images/italian.jpg'
         }),
         knex('restaurants').insert({
           // mexican
@@ -43,7 +46,8 @@ exports.seed = function(knex, Promise) {
           state: 'Washington',
           zip: '91123',
           cuisine: 'Mexican',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+          picture_url: '/images/mexican.jpeg'
         }),
         knex('restaurants').insert({
           // mongolian
@@ -53,7 +57,8 @@ exports.seed = function(knex, Promise) {
           state: 'Colorado',
           zip: '80900',
           cuisine: 'Mongolian',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+          picture_url: '/images/mongolian.jpeg'
         }),
         knex('restaurants').insert({
           // American
@@ -63,7 +68,8 @@ exports.seed = function(knex, Promise) {
           state: 'Colorado',
           zip: '80203',
           cuisine: 'American',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+          picture_url: '/images/american.jpg'
         })
       ]);
     });

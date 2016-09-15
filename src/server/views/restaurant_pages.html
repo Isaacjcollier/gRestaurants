@@ -7,73 +7,24 @@
 
 {% include './_navbar.html' %}
 
-    <div class="row">
-
-      <div class="container" >
-
-        <div class="col-md-6 box">
-          <img class="restaurant-image" src="/images/fine-dining.jpeg">
-          <img class="restaurant-image" src="/images/london-map.png" style="height:200px; background-color: #235;">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          </p>
-          <div class="rating">
-          <h3>some rating</h3>
-          <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-          </div>
-        </div>
-
-        <div class="col-md-6 box">
-          <img class="restaurant-image" src="/images/bbq.jpg">
-          <img class="restaurant-image" src="/images/london-map.png" style="height:200px; background-color: #235;">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          </p>
-          <div class="rating">
-          <h3>some rating</h3>
-          <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-          </div>
-
-        </div>
-        <div class="col-md-6 box">
-          <img class="restaurant-image" src="/images/mexican.jpeg">
-          <img class="restaurant-image" src="/images/london-map.png" class="location" style="height:200px; background-color: #235;">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          </p>
-          <div class="rating">
-          <h3>some rating</h3>
-          <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-          </div>
-
-        </div>
-        <div class="col-md-6 box">
-          <img class="restaurant-image" src="/images/italian.jpg">
-          <img class="restaurant-image" src="/images/london-map.png" style="height:200px; background-color: #235;">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          </p>
-          <div class="rating">
-          <h3>some rating</h3>
-          <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-          </div>
-        </div>
-
-        <div class="col-md-6 box">
-          <img class="restaurant-image" src="/images/mongolian.jpeg">
-          <img class="restaurant-image" src="/images/london-map.png" style="height:200px; background-color: #235;">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          </p>
-          <div class="rating">
-          <h3>some rating</h3>
-          <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-          </div>
-        </div>
-
-      </div>
-
+<div class="row">
+{% for restaurant in restaurants %}
+  <div class="col-4 box">
+    <img class="col-1 restaurant-image" src="/images/london-map.png">
+      <img class="restaurant-image" src="{{restaurant.picture_url}}">
+        <p class="description">{{restaurant.name}}</p>
+        <p class="description">{{restaurant.street}}</p>
+        <p class="description">{{restaurant.city}}</p>
+        <p class="description">{{restaurant.state}}</p>
+        <p class="description">{{restaurant.zip}}</p>
+        <p class="description">{{restaurant.description}}</p>
+        <div class="rating">
+        <h3>some rating</h3>
+      <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
     </div>
+  </div>
+{% endfor %}
+</div>
 
 {% include '_footer.html'%}
 
