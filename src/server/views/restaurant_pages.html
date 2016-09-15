@@ -10,14 +10,15 @@
 <div class="row">
 {% for restaurant in restaurants %}
   <div class="col-4 box">
+    <p class="restaurant-title">{{restaurant.name}}</p>
     <img class="restaurant-image" src="{{restaurant.picture_url}}">
-      <img class="col-1 restaurant-image" src="/images/london-map.png">
-        <p class="description">{{restaurant.name}}</p>
-        <p class="description">{{restaurant.street}}</p>
-        <p class="description">{{restaurant.city}}</p>
-        <p class="description">{{restaurant.state}}</p>
-        <p class="description">{{restaurant.zip}}</p>
-        <p class="description">{{restaurant.description}}</p>
+    <img class="col-1 restaurant-image" src="/images/london-map.png">
+      <p class="description">{{restaurant.name}}</p>
+      <p class="description">{{restaurant.street}}</p>
+      <p class="description">{{restaurant.city}}</p>
+      <p class="description">{{restaurant.state}}</p>
+      <p class="description">{{restaurant.zip}}</p>
+      <p class="description">{{restaurant.description}}</p>
         <input type="hidden" value="{{restaurant.id}}" name="id">
         <div class="rating">
         <h3 class="description">some rating</h3>
