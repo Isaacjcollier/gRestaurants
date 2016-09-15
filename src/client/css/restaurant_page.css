@@ -54,3 +54,8 @@
    content: "\2605";
    position: absolute;
 }
+
+.special-font {
+/*font-family: 'Black Ops One', cursive;*/
+font-family: 'Luckiest Guy', cursive;
+}
