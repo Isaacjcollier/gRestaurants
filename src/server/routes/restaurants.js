@@ -26,6 +26,7 @@ router.get('/new', (req, res, next) => {
 
 //post restaurant new
 router.post('/new', validation.checkValidation, (req, res, next) => {
+  console.log(req.body);
   const name = req.body.name;
   const street = req.body.street;
   const city = req.body.city;
@@ -33,7 +34,7 @@ router.post('/new', validation.checkValidation, (req, res, next) => {
   const zip = req.body.zip;
   const cuisine = req.body.cuisine;
   const description = req.body.description;
-  knex('restaurant')
+  knex('restaurants')
   .insert({
     name: name,
     street: street,
@@ -43,10 +44,18 @@ router.post('/new', validation.checkValidation, (req, res, next) => {
     cuisine: cuisine,
     description: description
   }, '*')
-  .then(() => {
-    res.redirect('/new');
+  .then((results) => {
+    if (results.length) {
+      res.redirect('/api/v1/restaurants');
+    } else {
+      res.status(404).send({
+        status: 'error',
+        message: 'error'
+      });
+    }
   })
   .catch((err) => {
+    console.log(err);
     res.status(500);
   });
 });
@@ -55,20 +64,20 @@ router.get('/1', (req, res, next) => {
   res.render('single_restaurant');
 });
 
-router.get('/view/:id', (req, res, next) => {
-
-  var restaurant_id = parseInt(req.params.id);
-
-  restaurants()
-  .select()
-  .where('id', restaurant_id)
-  .then(records => {
-
-    res.render('Restaurant', {
-      title: 'Restaurant',
-      restaurant: records[0]
-    });
-  });
-});
+// router.get('/view/:id', (req, res, next) => {
+//
+//   var restaurant_id = parseInt(req.params.id);
+//
+//   restaurants()
+//   .select()
+//   .where('id', restaurant_id)
+//   .then(records => {
+//
+//     res.render('Restaurant', {
+//       title: 'Restaurant',
+//       restaurant: records[0]
+//     });
+//   });
+// });
 
 module.exports = router;
