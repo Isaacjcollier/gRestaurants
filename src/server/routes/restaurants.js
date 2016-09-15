@@ -8,7 +8,7 @@ function restaurants() { return knex('restaurants'); }
 
 //render restaurants view
 router.get('/', (req, res, next) => {
-  knex('restaurants').select()
+  restaurants().select()
   .then((results) => {
     //renderObject is the database data to send back
     const renderObject = {};
@@ -18,6 +18,8 @@ router.get('/', (req, res, next) => {
     res.render('restaurant_pages', renderObject);
   });
 });
+
+
 
 //update restaurant route
 router.put('/:id/edit', (req, res, next) => {
@@ -111,8 +113,18 @@ router.post('/new', validation.checkValidation, (req, res, next) => {
   });
 });
 
-router.get('/1', (req, res, next) => {
-  res.render('single_restaurant');
+router.get('/:id', (req, res, next) => {
+  const restaurantId = parseInt(req.params.id)
+  knex('restaurants')
+  .select('*')
+  .where('id', restaurantId)
+  .then((results) => {
+    const singleRestaurantObject = {}
+
+    singleRestaurantObject.restaurantz = results
+    res.render('single_restaurant', singleRestaurantObject);
+  })
+
 });
 
 // router.get('/view/:id', (req, res, next) => {
