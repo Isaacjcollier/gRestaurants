@@ -5,8 +5,17 @@ const genres = require('../genres.json');
 
 // function restaurants() { return knex('restaurants'); }
 
+//render restaurants view
 router.get('/', (req, res, next) => {
-  res.render('restaurant_pages');
+  knex('restaurants').select()
+  .then((results) => {
+    //renderObject is the database data to send back
+    const renderObject = {};
+    //setting results equal the renderObject
+    renderObject.restaurants = results;
+    //render html page and renderObject on GET request
+    res.render('restaurant_pages', renderObject);
+  });
 });
 
 // router.get('/new', (req, res, next) => {

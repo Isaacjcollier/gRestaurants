@@ -12,6 +12,14 @@
   float: left;
   margin-left: 30%;
 }
+.nav-sub-header {
+  font-weight: bolder;
+  font-size: 2em;
+  color: orange;
+  float: left;
+  margin-left: 5%;
+  margin-top: 4%
+}
 
 .nav-list {
   margin-top: 150px;
