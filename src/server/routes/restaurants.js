@@ -6,12 +6,7 @@ const genres = require('../genres.json');
 // function restaurants() { return knex('restaurants'); }
 
 router.get('/', (req, res, next) => {
-  knex('restaurants').select()
-  .then((results) => {
-    const renderObject = {};
-    renderObject.restaurants = results;
-    res.render('restaurant_pages', renderObject);
-  });
+  res.render('restaurant_pages');
 });
 
 // router.get('/new', (req, res, next) => {
