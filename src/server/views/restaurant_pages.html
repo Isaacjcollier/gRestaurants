@@ -10,8 +10,7 @@
 <div class="row">
 {% for restaurant in restaurants %}
   <div class="col-4 box">
-    <a class="restaurant-title" href="/api/v1/restaurants/{{restaurant.id}}">{{restaurant.name}}</a>
-    <!-- <p ></p> -->
+    <p class="restaurant-title"><a href="/api/v1/restaurants/{{restaurant.id}}">{{restaurant.name}}</a></p>
     <img class="restaurant-image" src="{{restaurant.picture_url}}">
     <img class="col-1 restaurant-image" src="/images/london-map.png">
       <p class="description">{{restaurant.cuisine}}</p>
