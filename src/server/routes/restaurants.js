@@ -4,7 +4,7 @@ const knex = require('../db/knex');
 const genres = require('../genres.json');
 const validation = require('./validation');
 
-// function restaurants() { return knex('restaurants'); }
+function restaurants() { return knex('restaurants'); }
 
 //render restaurants view
 router.get('/', (req, res, next) => {

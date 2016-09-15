@@ -34,7 +34,7 @@
     const $updateCuisine = $('#input-cuisine').val();
     const $updateStreet = $('#input-street').val();
     const $updateCity = $('#input-city').val();
-    const $updateState= $('#input-state').val();
+    const $updateState = $('#input-state').val();
     const $updateZip = $('#input-zipcode').val();
     const $updateDescription = $('#input-description').val();
     console.log($idToUpdate);
