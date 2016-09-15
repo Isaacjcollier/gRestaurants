@@ -7,7 +7,6 @@
 
 {% include './_navbar.html' %}
 
-
   <div class="container">
     <div class="col-md-6 single-box-restaurant">
       <h2 class="special-font">Bubba's BBQ and Grill</h2>
@@ -28,6 +27,25 @@
       </div>
     </div>
 
+      <!-- employees -->
+      <table>
+        <thead>
+          <tr>
+            <th>Employee Name</th>
+            <th>Employee Role</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for employee in employees %}
+            <tr>
+              <td>{{employee.name}}</td>
+              <td>{{employee.role}}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+    <!-- reviews go here -->
     <div class="col-md-6">
       <div class="single-box-review">
         <h3>User Name :review:</h3>
