@@ -15,7 +15,7 @@
     const $restaurantID = $(this).attr('data-id');
     $('#input-picture-url').attr('value', $pictureURL);
     $('#input-name').attr('value', $restaurantName);
-    $('#input-cuisine').attr('value', $restaurantCuisine)
+    $('#input-cuisine').attr('value', $restaurantCuisine);
     $('#input-street').attr('value', $restaurantStreet);
     $('#input-city').attr('value', $restaurantCity);
     $('#input-state').attr('value', $restaurantState);
@@ -34,7 +34,7 @@
     const $updateCuisine = $('#input-cuisine').val();
     const $updateStreet = $('#input-street').val();
     const $updateCity = $('#input-city').val();
-    const $updateState= $('#input-state').val();
+    const $updateState = $('#input-state').val();
     const $updateZip = $('#input-zipcode').val();
     const $updateDescription = $('#input-description').val();
     console.log($idToUpdate);

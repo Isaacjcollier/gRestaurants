@@ -4,7 +4,7 @@ const knex = require('../db/knex');
 const genres = require('../genres.json');
 const validation = require('./validation');
 
-// function restaurants() { return knex('restaurants'); }
+function restaurants() { return knex('restaurants'); }
 
 //render restaurants view
 router.get('/', (req, res, next) => {
@@ -58,7 +58,7 @@ router.put('/:id/edit', (req, res, next) => {
         res.status(404).json({
           status: 'error',
           message: 'That id does not exsist'
-        })
+        });
       }
     })
     .catch((err) => {
