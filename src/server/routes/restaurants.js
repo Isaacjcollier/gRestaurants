@@ -70,18 +70,6 @@ router.put('/:id/edit', (req, res, next) => {
     });
 });
 
-router.get('/new', (req, res, next) => {
-
-  restaurants()
-  .select()
-  .then(restaurants => {
-      res.render('restaurants/new', {
-        title: 'New Restaurant',
-        genres: genres
-      });
-    });
-});
-
 //render restaurant new
 router.get('/new', (req, res, next) => {
   res.render('restaurant_admin_add');

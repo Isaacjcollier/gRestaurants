@@ -1,5 +1,7 @@
+{% extends '_base.html' %}
 
-<body>
+{% block content %}
+
 {{ error }}
 <!-- Form Validation -->
 <h3>CREATE RESTAURANT</h3>
@@ -122,4 +124,5 @@
   <button type="submit" class="btn btn-default">Submit</button>
   <button type="submit" class="btn btn-default">Cancel</button>
 </form>
-</body>
+
+{% endblock %}
