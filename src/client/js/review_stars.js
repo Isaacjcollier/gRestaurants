@@ -3,5 +3,5 @@
     e.preventDefault();
     const rating = $(this).attr('data-star');
     console.log(rating);
-  })
+  });
 })();
