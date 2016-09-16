@@ -49,14 +49,14 @@ router.post('/new', function (req, res, next) {
 });
 
 router.post('/', (req, res, next) => {
-  console.log(req.body);
-  const review = req.body.review;
-  const rating = req.body.rating;
-  const user_id = req.body.user;
+  // console.log('test',req.body);
+  const user_review = req.body.user_review;
+  const user_rating = req.body.user_rating;
+  const user_id = req.body.user_id;
   knex('reviews')
   .insert({
-    user_review: review,
-    user_rating: rating,
+    user_review: user_review,
+    user_rating: user_rating,
     user_id: user_id
   }, '*')
   .then((results) => {

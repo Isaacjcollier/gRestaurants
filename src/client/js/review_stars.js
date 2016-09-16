@@ -1,28 +1,42 @@
 (function () {
+
+  let rating = '';
+
   $(document).on('click', '.star', function (e) {
     e.preventDefault();
-    const rating = $(this).attr('data-star');
+    rating = $(this).attr('data-star');
     const starReplace = staticStar(rating);
-    // replaceSaticStars(htmlStarReplace);
-    console.log(rating);
+    // console.log(rating);
+  });
+
+  $('[name="review-form"]').on('submit', function(e) {
+    e.preventDefault();
+    const $user_rating = rating;
+    const $user_review = $('textarea#input_user_review').val();
+    const $user_id = $('#input_user_id').val();
+    // console.log($user_rating, $user_review, $user_id);
+    $.ajax({
+      type: 'POST',
+      url: '/api/v1/users',
+      data: {
+        user_rating: $user_rating,
+        user_review: $user_review,
+        user_id: $user_id
+      }
+    });
   });
 })();
 
-function replaceSaticStars(htmlStarReplace) {
-  $('.rating_wrap').replaceWith(starReplace);
-  $('.star').wrapAll('<div class="rating_wrap" />');
-}
-
 function staticStar(rating) {
-  $('[for=star_i]').removeClass('fa-star-o').addClass('fa-star');
-  let replaceStars = '';
   for (let i = 0; i < 5; i++) {
-
-    if (i < rating) {
-      replaceStars += `<label class="star fa startStyle fa-star fa-lg" for="star_${i + 1}" data-star="${i + 1}"></label>`;
+    if ($(`[for=star_${i + 1}]`).hasClass('fa-star-o')) {
+      if (i < rating) {
+        $(`[for=star_${i + 1}]`).removeClass('fa-star-o').addClass('fa-star');
+      }
     } else {
-      replaceStars += `<label class="star fa starStyle fa-star-o fa-lg" for="star_${i + 1}" data-star="${i + 1}"></label>`;
+      if (i + 1 > rating) {
+        $(`[for=star_${i + 1}]`).removeClass('fa-star').addClass('fa-star-o');
+      }
     }
   }
-  return replaceStars;
 }
