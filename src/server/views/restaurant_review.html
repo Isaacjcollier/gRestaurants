@@ -1,23 +1,23 @@
 {% extends '_base.html' %}
 {% block content %}
 
-<form method="POST" action="/api/v1/users">
+<form name="review-form" method="POST" action="/api/v1/users">
   <div class="form-group">
     <p class="special-font">User Name:</p>
-    <input type="text" class="form-control" placeholder="User Name" name="user">
+    <input type="text" class="form-control" placeholder="User Name" id="input_user_id" name="user_id">
   </div>
   <div class="form-group">
     <p class="special-font">Review:</p>
-    <textarea class="form-control" rows="5" name="review"></textarea>
+    <textarea class="form-control" rows="5" id="input_user_review" name="user_review"></textarea>
   </div>
 
   <!-- star rating -->
   <div class="rating_wrap">
-    <label class="star starStyle fa fa-star fa-lg" for="star_1" data-star="1"></label>
-    <label class="star starStyle fa fa-star fa-lg" for="star_2" data-star="2"></label>
-    <label class="star starStyle fa fa-star fa-lg" for="star_3" data-star="3"></label>
-    <label class="star starStyle fa fa-star fa-lg" for="star_4" data-star="4"></label>
-    <label class="star starStyle fa fa-star fa-lg" for="star_5" data-star="5"></label>
+    <label class="star fa fa-star-o fa-lg" for="star_1" data-star="1"></label>
+    <label class="star fa fa-star-o fa-lg" for="star_2" data-star="2"></label>
+    <label class="star fa fa-star-o fa-lg" for="star_3" data-star="3"></label>
+    <label class="star fa fa-star-o fa-lg" for="star_4" data-star="4"></label>
+    <label class="star fa fa-star-o fa-lg" for="star_5" data-star="5"></label>
   </div>
 
   <button type="submit" class="btn btn-success form-button">Submit</button>
