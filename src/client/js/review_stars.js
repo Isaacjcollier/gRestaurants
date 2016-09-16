@@ -2,18 +2,19 @@
   $(document).on('click', '.star', function (e) {
     e.preventDefault();
     const rating = $(this).attr('data-star');
-    const htmlStarReplace = staticStar(rating);
-    replaceSaticStars(htmlStarReplace);
+    const starReplace = staticStar(rating);
+    // replaceSaticStars(htmlStarReplace);
     console.log(rating);
   });
 })();
 
 function replaceSaticStars(htmlStarReplace) {
-  $('.rating_wrap').replaceWith(htmlStarReplace);
+  $('.rating_wrap').replaceWith(starReplace);
   $('.star').wrapAll('<div class="rating_wrap" />');
 }
 
 function staticStar(rating) {
+  $('[for=star_i]').removeClass('fa-star-o').addClass('fa-star')
   let replaceStars = '';
   for (let i = 0; i < 5; i++) {
 
