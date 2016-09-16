@@ -1,38 +1,10 @@
-
 exports.seed = function(knex, Promise) {
-  // Deletes ALL existing entries
-  return knex('users').del()
+    //Deletes ALL existing entries
+    return knex('reviews').del()
     .then(function () {
-      Promise.all([
-        // Inserts seed entries
-        knex('users').insert({
-          first_name: 'Jordon',
-          last_name: 'Hoshor',
-          role: 'Admin',
-          email: 'jordonhoshor@galvanize.com',
-          username: 'ho0dlum'
-        }),
-        knex('users').insert({
-          first_name: 'Phil',
-          last_name: 'Benz',
-          email: 'philbenz@galvanize.com',
-          username: 'phillyiet'
-        }),
-        knex('users').insert({
-          first_name: 'Akiko',
-          last_name: 'Okabe',
-          email: 'akikookabe@galvanize.com',
-          username: 'okabesan'
-        }),
-        knex('users').insert({
-          first_name: 'Isaac',
-          last_name: 'Collier',
-          email: 'isaacjcollier@galvanize.com',
-          username: 'chunkywombat'
-        })
-      ]);
 
-      console.log('am i in reviews yet?');
+      //for this seed we should run a sql count against the number of restaurants and the number of users.  this would be a better way to generate data.
+
       knex('users').min('id')
       .then(min_results => {
         let min_user_id = min_results[0].min;
@@ -58,15 +30,14 @@ exports.seed = function(knex, Promise) {
               user_id: userIDKey
             };
             reviewArray.push(reviewObj);
-
           }
 
           knex('reviews').insert(
             reviewArray
-          ).then(records => {
-            return true;
-          });
+            ).then(records => {
+              return true;
+            });
         });
       });
     });
-};
+  };
