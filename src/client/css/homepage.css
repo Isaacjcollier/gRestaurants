@@ -1,6 +1,14 @@
 .restaurant-images {
   height: 300px;
-  border: 20px solid black;
+  border: 8px solid black;
   float: left;
   margin: 4%;
+}
+body {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#aebcbf+21,0a0e0a+100,0a0809+100 */
+background: rgb(174,188,191); /* Old browsers */
+background: -moz-radial-gradient(center, ellipse cover, rgba(174,188,191,1) 21%, rgba(10,14,10,1) 100%, rgba(10,8,9,1) 100%); /* FF3.6-15 */
+background: -webkit-radial-gradient(center, ellipse cover, rgba(174,188,191,1) 21%,rgba(10,14,10,1) 100%,rgba(10,8,9,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: radial-gradient(ellipse at center, rgba(174,188,191,1) 21%,rgba(10,14,10,1) 100%,rgba(10,8,9,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#aebcbf', endColorstr='#0a0809',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }

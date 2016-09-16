@@ -1,0 +1,9 @@
+.rating {
+	display: none;
+}
+.star:hover:before,
+.star:hover ~ .star:before,
+.rating:checked ~ .star:before
+{
+	content: "\f006";
+}

@@ -12,9 +12,18 @@
   float: left;
   margin-left: 30%;
 }
+.nav-sub-header {
+  font-weight: bolder;
+  font-size: 2em;
+  color: orange;
+  float: left;
+  margin-left: 5%;
+  margin-top: 4%
+}
 
 .nav-list {
   margin-top: 150px;
+  margin-left: 30%;
 }
 
 .navigate {
@@ -26,10 +35,11 @@
   font-size: 2em;
   margin-left: 10%;
   color: orange;
+  border-left: 10px solid orange;
 }
 
 .navigate-a:hover {
-  color: black;
+  color: white;
 }
 
 .sign-up, .sign-in {
