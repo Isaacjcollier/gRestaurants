@@ -14,7 +14,7 @@ function replaceSaticStars(htmlStarReplace) {
 }
 
 function staticStar(rating) {
-  $('[for=star_i]').removeClass('fa-star-o').addClass('fa-star')
+  $('[for=star_i]').removeClass('fa-star-o').addClass('fa-star');
   let replaceStars = '';
   for (let i = 0; i < 5; i++) {
 
