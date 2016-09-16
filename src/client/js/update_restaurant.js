@@ -65,10 +65,28 @@
     });
   });
 
+  //delete button click fills form input
   $(document).on('click', '#delete-restaurant', function(event) {
     event.preventDefault();
     const $deleteRestaurantID = $(this).attr('data-id');
     $('#input-id-delete').attr('value', $deleteRestaurantID);
+  });
+
+  //on delete button click inside modal, send delete request
+  $('#delete-btn').on('click', function(event) {
+    event.preventDefault();
+    const $deleteAuthorByID = parseInt($('#input-id-delete').val());
+    $.ajax({
+      type: 'DELETE',
+      url: `/api/v1/restaurants/${$deleteAuthorByID}/delete`
+    })
+    .done((data) => {
+      $('#myModal-delete').modal('toggle');
+      location.reload();
+    })
+    .fail((error) => {
+      console.log(error);
+    });
   });
 
 })();
