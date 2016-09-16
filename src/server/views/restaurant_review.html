@@ -1,19 +1,32 @@
 {% extends '_base.html' %}
 {% block content %}
 
+<form method="POST" action="/api/v1/users">
+  <div class="form-group">
+    <p class="special-font">User Name:</p>
+    <input type="text" class="form-control" placeholder="User Name" name="user">
+  </div>
+  <div class="form-group">
+    <p class="special-font">Review:</p>
+    <textarea class="form-control" rows="5" name="review"></textarea>
+  </div>
 
-<div class="star-rating_wrap">
-  <label class="star fa fa-star fa-lg" for="star_1" data-star="1"></label>
-  <input class="rating" id="star_1" type="radio" name="rating">
-  <label class="star fa fa-star fa-lg" for="star_2" data-star="2"></label>
-  <input class="rating" id="star_2" type="radio" name="rating">
-  <label class="star fa fa-star fa-lg" for="star_3" data-star="3"></label>
-  <input class="rating" id="star_3" type="radio" name="rating">
-  <label class="star fa fa-star fa-lg" for="star_4" data-star="4"></label>
-  <input class="rating" id="star_4" type="radio" name="rating">
-  <label class="star fa fa-star fa-lg" for="star_5" data-star="5"></label>
-  <input class="rating" id="star_5" type="radio" name="rating">
-</div>
-
+  <!-- star rating -->
+  <div class="rating_wrap">
+    <label class="star starStyle fa fa-star fa-lg" for="star_1" data-star="1"></label>
+    <label class="star starStyle fa fa-star fa-lg" for="star_2" data-star="2"></label>
+    <label class="star starStyle fa fa-star fa-lg" for="star_3" data-star="3"></label>
+    <label class="star starStyle fa fa-star fa-lg" for="star_4" data-star="4"></label>
+    <label class="star starStyle fa fa-star fa-lg" for="star_5" data-star="5"></label>
+  </div>
+  <div class="rating_wrap" type="hidden">
+    <label class="star starStyle fa fa-star-o fa-lg" for="star_1" data-star="1"></label>
+    <label class="star starStyle fa fa-star-o fa-lg" for="star_2" data-star="2"></label>
+    <label class="star starStyle fa fa-star-o fa-lg" for="star_3" data-star="3"></label>
+    <label class="star starStyle fa fa-star-o fa-lg" for="star_4" data-star="4"></label>
+    <label class="star starStyle fa fa-star-o fa-lg" for="star_5" data-star="5"></label>
+  </div>
+  <button type="submit" class="btn btn-success form-button">Submit</button>
+</form>
 
 {% endblock %}
