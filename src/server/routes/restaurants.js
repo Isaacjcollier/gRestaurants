@@ -157,20 +157,4 @@ router.get('/:id', (req, res, next) => {
 
 });
 
-// router.get('/view/:id', (req, res, next) => {
-//
-//   var restaurant_id = parseInt(req.params.id);
-//
-//   restaurants()
-//   .select()
-//   .where('id', restaurant_id)
-//   .then(records => {
-//
-//     res.render('Restaurant', {
-//       title: 'Restaurant',
-//       restaurant: records[0]
-//     });
-//   });
-// });
-
 module.exports = router;
