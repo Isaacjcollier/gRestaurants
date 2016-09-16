@@ -1,8 +1,8 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('join_reviews_restaurants', function (table) {
     table.increments();
-    table.string('user_id').notNullable();
-    table.string('restaurant_id').notNullable();
+    table.integer('review_id').unsigned().references('id').inTable('reviews').notNullable();
+    table.integer('restaurant_id').unsigned().references('id').inTable('restaurants');
   });
 };
 
