@@ -7,73 +7,83 @@
 
 {% include './_navbar.html' %}
 
-    <div class="row">
-
-      <div class="container" >
-
-        <div class="col-md-6 box">
-          <img class="restaurant-image" src="/images/fine-dining.jpeg">
-          <img class="restaurant-image" src="/images/london-map.png" style="height:200px; background-color: #235;">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          </p>
-          <div class="rating">
-          <h3>some rating</h3>
-          <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-          </div>
-        </div>
-
-        <div class="col-md-6 box">
-          <img class="restaurant-image" src="/images/bbq.jpg">
-          <img class="restaurant-image" src="/images/london-map.png" style="height:200px; background-color: #235;">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          </p>
-          <div class="rating">
-          <h3>some rating</h3>
-          <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-          </div>
-
-        </div>
-        <div class="col-md-6 box">
-          <img class="restaurant-image" src="/images/mexican.jpeg">
-          <img class="restaurant-image" src="/images/london-map.png" class="location" style="height:200px; background-color: #235;">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          </p>
-          <div class="rating">
-          <h3>some rating</h3>
-          <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-          </div>
-
-        </div>
-        <div class="col-md-6 box">
-          <img class="restaurant-image" src="/images/italian.jpg">
-          <img class="restaurant-image" src="/images/london-map.png" style="height:200px; background-color: #235;">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          </p>
-          <div class="rating">
-          <h3>some rating</h3>
-          <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-          </div>
-        </div>
-
-        <div class="col-md-6 box">
-          <img class="restaurant-image" src="/images/mongolian.jpeg">
-          <img class="restaurant-image" src="/images/london-map.png" style="height:200px; background-color: #235;">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          </p>
-          <div class="rating">
-          <h3>some rating</h3>
-          <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-          </div>
-        </div>
-
-      </div>
-
+<div class="row">
+{% for restaurant in restaurants %}
+  <div class="col-4 box">
+    <p class="restaurant-title">{{restaurant.name}}</p>
+    <img class="restaurant-image" src="{{restaurant.picture_url}}">
+    <img class="col-1 restaurant-image" src="/images/london-map.png">
+      <p class="description">{{restaurant.name}}</p>
+      <p class="description">{{restaurant.street}}</p>
+      <p class="description">{{restaurant.city}}</p>
+      <p class="description">{{restaurant.state}}</p>
+      <p class="description">{{restaurant.zip}}</p>
+      <p class="description">{{restaurant.description}}</p>
+        <input type="hidden" value="{{restaurant.id}}" name="id">
+        <div class="rating">
+        <h3 class="description">some rating</h3>
+      <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
     </div>
+    <button type="button" class="edit-restaurant" id="edit-restaurant" data-toggle="modal" data-target="#myModal-edit" data-image="{{restaurant.picture_url}}" data-name="{{restaurant.name}}" data-street="{{restaurant.street}}" data-city="{{restaurant.city}}" data-state="{{restaurant.state}}" data-zipcode="{{restaurant.zip}}" data-id="{{restaurant.id}}" data-description="{{restaurant.description}}">EDIT</button>
+    <button type="button" class="del-restaurant" id="delete-restaurant" data-toggle="modal" data-target="#myModal-delete" data-id="{{restaurant.id}}">DELETE</button>
+  </div>
+{% endfor %}
+</div>
+
+<!-- update restaurant modal -->
+<div class="modal fade" id="myModal-edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form id="modal-form">
+          <div class="form-group">
+            <input type="text" class="form-control" name="picture" id="input-picture-url">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="name" id="input-name">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="street" id="input-street">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="city" id="input-city">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="state" id="input-state">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="zipcode" id="input-zipcode">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="description" id="input-description">
+          </div>
+          <input type="hidden" name="id" id="input-id">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" id="save-changes" class="btn btn-primary">Save changes</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end update modal -->
+
+<!-- delete restaurant modal -->
+<div class="modal fade" id="myModal-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form id="modal-form">
+          <div class="form-group">
+            <input type="text" class="form-control" name="id" id="input-id-delete">
+          </div>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" id="delete-btn" class="btn btn-primary">Delete</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end delete modal -->
 
 {% include '_footer.html'%}
 

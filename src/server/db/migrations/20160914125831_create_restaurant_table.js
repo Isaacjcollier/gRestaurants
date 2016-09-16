@@ -8,6 +8,7 @@ exports.up = function(knex, Promise) {
     table.string('zip').notNullable();
     table.string('cuisine').notNullable();
     table.string('description').notNullable();
+    table.string('picture_url').notNullable();
   });
 };
 
