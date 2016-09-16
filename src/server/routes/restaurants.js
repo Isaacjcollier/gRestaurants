@@ -106,7 +106,9 @@ router.get('/new', (req, res, next) => {
 
 //post restaurant new
 router.post('/new', validation.checkValidation, (req, res, next) => {
+
   console.log(req.body);
+
   const name = req.body.name;
   const street = req.body.street;
   const city = req.body.city;
@@ -154,23 +156,22 @@ router.get('/:id', (req, res, next) => {
     singleRestaurantObject.restaurantz = results;
     res.render('single_restaurant', singleRestaurantObject);
   });
-
 });
 
-// router.get('/view/:id', (req, res, next) => {
-//
-//   var restaurant_id = parseInt(req.params.id);
-//
-//   restaurants()
-//   .select()
-//   .where('id', restaurant_id)
-//   .then(records => {
-//
-//     res.render('Restaurant', {
-//       title: 'Restaurant',
-//       restaurant: records[0]
-//     });
-//   });
-// });
+router.get('/view/:id', (req, res, next) => {
+
+  var restaurant_id = parseInt(req.params.id);
+
+  restaurants()
+  .select()
+  .where('id', restaurant_id)
+  .then(records => {
+
+    res.render('Restaurant', {
+      title: 'Restaurant',
+      restaurant: records[0]
+    });
+  });
+});
 
 module.exports = router;

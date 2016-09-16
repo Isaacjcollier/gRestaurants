@@ -1,3 +1,4 @@
+
 // add new restaurant validation
 function checkValidation(req, res, next) {
   const name = req.body.name;

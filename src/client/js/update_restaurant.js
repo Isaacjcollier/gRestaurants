@@ -66,6 +66,7 @@
   });
 
   //delete button click fills form input
+
   $(document).on('click', '#delete-restaurant', function(event) {
     event.preventDefault();
     const $deleteRestaurantID = $(this).attr('data-id');
@@ -88,5 +89,4 @@
       console.log(error);
     });
   });
-
 })();
