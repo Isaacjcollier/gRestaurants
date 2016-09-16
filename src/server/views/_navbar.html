@@ -22,16 +22,19 @@
       <div class="modal-body">
         <form id="modal-form">
           <div class="form-group">
+            <input type="text" class="form-control" name="first_name" id="input-firstName" placeholder="enter first name"><br>
+
+            <input type="text" class="form-control" name="last_name" id="input-lastName" placeholder="enter last name"><br>
+
             <input type="email" class="form-control" name="email" id="input-user-email" placeholder="Email Address"><br>
 
             <input type="text" class="form-control" name="username" id="input-username" placeholder="User Name"><br>
 
             <input type="password" class="form-control" name="password" id="input-new-password" placeholder="Enter New Password"><br>
 
-            <input type="password" class="form-control" name="varify-password" id="input-verify-password" placeholder="Verify Password">
           </div>
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="submit" id="sign-up-modal" class="btn btn-primary">Sign Up</button>
+          <button type="submit" method="post" action="" id="sign-up-modal" class="btn btn-primary">Sign Up</button>
         </form>
       </div>
     </div>
