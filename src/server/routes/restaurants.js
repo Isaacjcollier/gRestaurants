@@ -19,6 +19,35 @@ router.get('/', (req, res, next) => {
   });
 });
 
+router.delete('/:id/delete', (req, res, next) => {
+  const id = parseInt(req.params.id);
+  knex('join_reviews_restaurants')
+  .where('restaurant_id', id)
+  .del()
+  .then((employees) => {
+    knex('employees')
+    .where('restaurant_id', id)
+    .del()
+    .then((restaurants) => {
+      knex('restaurants')
+      .where('restaurants.id', id)
+      .del()
+      .then((results) => {
+        res.status(200).send({
+          status: 'success'
+        });
+      });
+    });
+  })
+  .catch((err) => {
+    console.log(err);
+    res.status(500).send({
+      status:'Server Error',
+      message: 'Check Server Log'
+    });
+  });
+});
+
 //update restaurant route
 router.put('/:id/edit', (req, res, next) => {
   //PUT object body

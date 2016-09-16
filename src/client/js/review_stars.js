@@ -16,6 +16,7 @@ function replaceSaticStars(htmlStarReplace) {
 function staticStar(rating) {
   let replaceStars = '';
   for (let i = 0; i < 5; i++) {
+
     if (i < rating) {
       replaceStars += `<label class="star fa startStyle fa-star fa-lg" for="star_${i + 1}" data-star="${i + 1}"></label>`;
     } else {
