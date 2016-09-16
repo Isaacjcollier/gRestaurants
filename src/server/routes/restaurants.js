@@ -146,14 +146,19 @@ router.post('/new', validation.checkValidation, (req, res, next) => {
 router.get('/:id', (req, res, next) => {
   const restaurantId = parseInt(req.params.id);
   knex('restaurants')
+  .join('join_reviews_restaurants','join_reviews_restaurants.restaurant_id', 'restaurants.id')
+  .join('reviews', 'reviews.id', 'join_reviews_restaurants.review_id')
   .select('*')
-  .where('id', restaurantId)
+  .where('restaurant_id', restaurantId)
+  // [{ a: 3, b: 10 }, { a: 3, b: 114 }] >> { a: 3, b: [10, 114] }
   .then((results) => {
+    console.log(results);
     const singleRestaurantObject = {};
 
     singleRestaurantObject.restaurantz = results;
     res.render('single_restaurant', singleRestaurantObject);
-  });
+  })
+  .then();
 
 });
 
