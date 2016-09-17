@@ -8,8 +8,9 @@ function restaurants() { return knex('restaurants'); }
 
 //render restaurants view
 router.get('/', (req, res, next) => {
-  restaurants().select()
+  restaurants().select('*')
   .then((results) => {
+    console.log(results);
     //renderObject is the database data to send back
     const renderObject = {};
     //setting results equal the renderObject
@@ -145,6 +146,18 @@ router.post('/new', validation.checkValidation, (req, res, next) => {
   });
 });
 
+// router.get('/:id', (req, res, next) => {
+//   const restaurantId = parseInt(req.params.id);
+//   knex('restaurants')
+//   .select('*')
+//   .where('id', restaurantId)
+//   .then((results) => {
+//     const singleRestaurantObject = {};
+//     singleRestaurantObject.restaurantz = results;
+//     res.render('single_restaurant', singleRestaurantObject);
+//   });
+// });
+
 router.get('/:id', (req, res, next) => {
   const restaurantId = parseInt(req.params.id);
   knex('restaurants')
@@ -162,20 +175,20 @@ router.get('/:id', (req, res, next) => {
   });
 });
 
-router.get('/view/:id', (req, res, next) => {
-
-  var restaurant_id = parseInt(req.params.id);
-
-  restaurants()
-  .select()
-  .where('id', restaurant_id)
-  .then(records => {
-
-    res.render('Restaurant', {
-      title: 'Restaurant',
-      restaurant: records[0]
-    });
-  });
-});
+// router.get('/view/:id', (req, res, next) => {
+//
+//   var restaurant_id = parseInt(req.params.id);
+//
+//   restaurants()
+//   .select()
+//   .where('id', restaurant_id)
+//   .then(records => {
+//
+//     res.render('Restaurant', {
+//       title: 'Restaurant',
+//       restaurant: records[0]
+//     });
+//   });
+// });
 
 module.exports = router;
