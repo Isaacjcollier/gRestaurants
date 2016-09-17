@@ -32,6 +32,9 @@
 
   $('#modal-sign-in').on('click', (event) => {
     event.preventDefault();
+    console.log('looking to sign in');
+
+    var cookieData = [encodeURIComponent('user') + '=' + encodeURIComponent($('#signin-username').val()) + ';'];
 
     const userPayload = {
       username: $('#signin-username').val(),
@@ -40,11 +43,14 @@
 
     //PUT request with payload for server
     $.ajax({
-      type: 'GET',
+      type: 'POST',
       url: '/api/v1/users/sign_in',
       data: userPayload
     })
-    .done((data) => {
+    .done((result) => {
+      console.log('~~~~~~~~~~~~~');
+      //create Cookie
+      document.cookie = cookieData;
       //toggle modal off when complete
       $('#myModal-edit').modal('toggle');
       //reload page to show updates

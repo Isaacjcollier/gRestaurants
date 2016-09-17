@@ -79,15 +79,17 @@ router.post('/new', function (req, res, next) {
     });
 });
 
-router.get('/sign_in', function (req, res, next) {
+router.post('/sign_in', function (req, res, next) {
+
+  console.log('in the sign in');
+  console.log('username: ', req.body.username);
   knex('users')
   .where({
-    username: req.query.username
+    username: req.body.username
   })
   .select('password')
   .then((results) => {
-      if (bcrypt.compareSync(req.query.password, results[0].password)) {
-        console.log('You are logged in!');
+      if (bcrypt.compareSync(req.body.password, results[0].password)) {
         res.redirect('/api/v1/restaurants');
       } else {
         res.status(500).send({
