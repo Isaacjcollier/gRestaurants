@@ -64,7 +64,6 @@ router.post('/new', function (req, res, next) {
     password: hash
   })
   .then((results) => {
-      console.log(results);
       if (results) {
         res.redirect('/api/v1/restaurants');
       } else {
@@ -81,17 +80,12 @@ router.post('/new', function (req, res, next) {
 });
 
 router.get('/sign_in', function (req, res, next) {
-  console.log('in sign in....');
-  console.log('req.query: ', req.query);
-  console.log('req.body: ', req.body);
   knex('users')
   .where({
     username: req.query.username
   })
   .select('password')
   .then((results) => {
-      console.log('results: ', results);
-      console.log('req pwd: ', req.query.password);
       if (bcrypt.compareSync(req.query.password, results[0].password)) {
         console.log('You are logged in!');
         res.redirect('/api/v1/restaurants');

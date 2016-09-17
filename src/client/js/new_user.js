@@ -38,8 +38,6 @@
       password: $('#signin-password').val()
     };
 
-    console.log('paylod: ', userPayload);
-
     //PUT request with payload for server
     $.ajax({
       type: 'GET',
