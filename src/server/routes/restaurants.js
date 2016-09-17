@@ -8,7 +8,7 @@ function restaurants() { return knex('restaurants'); }
 
 //render restaurants view
 router.get('/', (req, res, next) => {
-  restaurants().select()
+  restaurants().select('*')
   .then((results) => {
     //renderObject is the database data to send back
     const renderObject = {};
@@ -129,7 +129,7 @@ router.post('/new', validation.checkValidation, (req, res, next) => {
     picture_url: picture_url
   }, '*')
   .then((results) => {
-    console.log(results);
+    // console.log(results);
     if (results.length) {
       res.redirect('/api/v1/restaurants');
     } else {
