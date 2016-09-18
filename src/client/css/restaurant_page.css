@@ -7,6 +7,13 @@
   float: left;
 }
 
+.restaurant-title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: bold;
+  float:left
+}
+
 .box {
   background-color:white;
   border: 5px solid black;
@@ -41,7 +48,9 @@
 .rating {
   unicode-bidi: bidi-override;
   direction: rtl;
-  padding-right: 3%;
+  /*padding-right: 10px;
+  padding-top: 10px;*/
+  padding: 10px 20px 0px 0px;
 }
 
 .rating > span {

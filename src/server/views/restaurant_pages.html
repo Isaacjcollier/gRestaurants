@@ -10,19 +10,19 @@
 {% for restaurant in restaurants %}
   <div class="col-4 box">
     <p class="restaurant-title"><a href="/api/v1/restaurants/{{restaurant.id}}">{{restaurant.name}}</a></p>
+    <div class="rating">
+  <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+</div>
     <img class="restaurant-image" src="{{restaurant.picture_url}}">
-    <img class="col-1 restaurant-image" src="/images/london-map.png">
-      <p class="description">{{restaurant.cuisine}}</p>
-      <p class="description">{{restaurant.street}}</p>
-      <p class="description">{{restaurant.city}}</p>
-      <p class="description">{{restaurant.state}}</p>
-      <p class="description">{{restaurant.zip}}</p>
+    <!-- <img class="col-1 restaurant-image" src="/images/london-map.png"> -->
+      <p class="street">{{restaurant.street}}</p>
+      <p class="city">{{restaurant.city}}</p>
+      <p class="state">{{restaurant.state}}</p>
+      <p class="zip">{{restaurant.zip}}</p>
       <p class="description">{{restaurant.description}}</p>
-        <input type="hidden" value="{{restaurant.id}}" name="id">
-        <div class="rating">
-        <h3 class="description">some rating</h3>
-      <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-    </div>
+      <p class="cuisine">{{restaurant.cuisine}}</p>
+      <input type="hidden" value="{{restaurant.id}}" name="id">
+
     <button type="button" class="edit-restaurant" id="edit-restaurant" data-toggle="modal" data-target="#myModal-edit" data-image="{{restaurant.picture_url}}" data-name="{{restaurant.name}}" data-cuisine="{{restaurant.cuisine}}" data-street="{{restaurant.street}}" data-city="{{restaurant.city}}" data-state="{{restaurant.state}}" data-zipcode="{{restaurant.zip}}" data-id="{{restaurant.id}}" data-description="{{restaurant.description}}">EDIT</button>
     <button type="button" class="del-restaurant" id="delete-restaurant" data-toggle="modal" data-target="#myModal-delete" data-id="{{restaurant.id}}">DELETE</button>
   </div>
