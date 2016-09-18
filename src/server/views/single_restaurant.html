@@ -6,62 +6,123 @@
 
 {% include './_navbar.html' %}
 
-  <div class="container">
-    {% for restaurant in restaurantz %}
-    <div class="col-md-6 single-box-restaurant">
-      <h2 class="special-font">{{restaurant.name}}</h2>
-      <img src="{{restaurant.picture_url}}" alt="bbq restaurant photo" style="height:350px; width:470px;" />
-      <h4>
-        {{restaurant.description}}
-      </h4>
-      <img class="restaurant-map-image" src="/images/london-map.png" style="height:200px; background-color: #235;">
-      <div class="company-address">
-        <h4 class="special-font">Address:</h4>
-        <h5 class="special-font">street: {{restaurant.street}}</h5>
-        <h5 class="special-font">city: {{restaurant.city}}</h5>
-        <h5 class="special-font">state: {{restaurant.state}}</h5>
-        <h5 class="special-font">zip: {{restaurant.zip}}</h5>
-      </div>
-      <h3 class="special-font">Cuisine Type:{{restaurant.cuisine}}</h3>
-      <div class="rating rating-position">
-      <h3>Consumer rating</h3>
-      <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-      </div>
-      {% endfor %}
+<div class="container">
+  <div class="col-md-6 single-box-restaurant">
+    <h2 class="special-font">{{restaurants.name}}</h2>
+    <img src="{{restaurants.picture_url}}"/>
+    <h4>{{restaurants.description}}</h4>
+    <img class="restaurant-map-image" src="/images/london-map.png" style="height:200px; background-color: #235;">
+    <div class="company-address">
+      <h4 class="special-font">Address:</h4>
+      <h5 class="special-font">street: {{restaurants.street}}</h5>
+      <h5 class="special-font">city: {{restaurants.city}}</h5>
+      <h5 class="special-font">state: {{restaurants.state}}</h5>
+      <h5 class="special-font">zip: {{restaurants.zip}}</h5>
     </div>
-
-      <!-- employees -->
-      <!-- <table>
-        <thead>
-          <tr>
-            <th>Employee Name</th>
-            <th>Employee Role</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for employee in employees %}
-            <tr>
-              <td>{{employee.name}}</td>
-              <td>{{employee.role}}</td>
-            </tr>
-          {% endfor %}
-        </tbody>
-      </table> -->
-
-    <!-- reviews go here -->
-    <div class="col-md-6">
-      {% for restaurant in restaurantz %}
-      <div class="single-box-review">
-        <h3>User Name :review rating {{restaurant.user_rating}}</h3>
-        <p>
-          {{restaurant.user_review}}
-        </p>
-      </div>
-      {% endfor %}
+    <h3 class="special-font">Cuisine Type:{{restaurants.cuisine}}</h3>
+    <div class="rating rating-position">
+    <h3>Consumer rating</h3>
+    <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
     </div>
   </div>
+  {% for user in users%}
+  <p> {{user.first_name}} {{user.last_name}}</p>
+  {% endfor %}
+    {% for review in reviews %}
+    <div class="col-md-6 single-box-review">
+      <p>{{review.user_rating}}</p>
+      <p>{{review.user_review}}</p>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<!-- employees -->
+<div class="employees col-8">
+  <table>
+    <thead>
+      <tr>
+        <th class="employee-table-header">Employee Name</th>
+        <th class="employee-table-header">Employee Role</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for employee in employees %}
+        <tr>
+          <div>
+            <td class="employee-table-data">{{employee.name}}</td>
+            <td class="employee-table-data">{{employee.role}}<td>
+            <td><input type="hidden" value="{{employee.id}}" name="employee-id">
+            <button type="submit" class="edit-employees" id="edit-employees" data-toggle="modal" data-target="#myModal-edit-emp" data-id="{{employee.id}}" data-name="{{employee.name}}" data-role="{{employee.role}}">EDIT</button>
+            <button type="submit" class="delete-employees" id="delete-employees" data-toggle="modal" data-target="#myModal-del" data-id="{{employee.id}}">DELETE</button></td>
+          </div>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+  <button type="submit" class="add-employee" id="add-employee" data-toggle="modal" data-target="#myModal-add-emp" data-id="{{employee.id}}" data-name="{{employee.name}}" data-role="{{employee.role}}">ADD</button>
+</div>
+
+<!-- edit employee modal -->
+<div class="modal fade" id="myModal-edit-emp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form id="modal-form">
+          <div class="form-group">
+            <input type="text" class="form-control" name="employee-name" id="input-employee-name">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="employee-role" id="input-employee-role">
+          </div>
+          <input type="hidden" name="id" id="input-employee-id">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" id="employee-edit-btn" class="btn btn-primary">Edit Employee</button>
+        </form>
+      </div>
     </div>
   </div>
+</div>
+<!-- end edit modal -->
+
+<!-- add employee modal -->
+<div class="modal fade" id="myModal-add-emp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form id="modal-form">
+          <div class="form-group">
+            <input type="text" class="form-control" name="id" id="input-new-emp-name" placeholder="New Employee Name">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="id" id="input-new-emp-role" placeholder="New Employee Role">
+          </div>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" id="employee-add-btn" class="btn btn-primary">Add Employee</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end add modal -->
+
+<!-- delete employee modal -->
+<div class="modal fade" id="myModal-del" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form id="modal-form">
+          <div class="form-group">
+            <input type="text" class="form-control" name="id" id="input-employee-delete">
+          </div>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" id="employee-delete-btn" class="btn btn-primary">Delete Employee</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end delete modal -->
 
 {% include '_footer.html'%}
 

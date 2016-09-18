@@ -1,4 +1,4 @@
-
+//user seed data
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
   return knex('users').del()
@@ -31,7 +31,6 @@ exports.seed = function(knex, Promise) {
           username: 'chunkywombat'
         })
       ]);
-
       console.log('am i in reviews yet?');
       knex('users').min('id')
       .then(min_results => {

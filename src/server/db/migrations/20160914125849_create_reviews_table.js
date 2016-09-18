@@ -3,7 +3,8 @@ exports.up = function(knex, Promise) {
     table.increments();
     table.integer('user_rating');
     table.string('user_review').notNullable();
-    table.integer('user_id').unsigned().references('id').inTable('users').notNullable();
+    table.integer('user_id').unsigned().references('id').inTable('users');
+    table.integer('restaurant_id').unsigned().references('id').inTable('restaurants');
     table.timestamp('created_at').defaultTo(knex.fn.now());
   });
 };
