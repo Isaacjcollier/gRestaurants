@@ -1,4 +1,4 @@
-
+//restaurants seed file info
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
   return knex('restaurants').del()
@@ -74,5 +74,3 @@ exports.seed = function(knex, Promise) {
       ]);
     });
 };
-
-// bbq, fine-dining, italian, mexican, mongolian, american

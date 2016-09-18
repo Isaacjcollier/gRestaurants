@@ -40,3 +40,16 @@
   border-radius:20%;
   background-color: #235;
 }
+
+.employees {
+  padding: 4%;
+}
+
+.edit-employees, .delete-employees, .add-employee {
+  margin: 2%;
+}
+
+.employee-table-header, .employee-table-data {
+  padding: 7%;
+  background-color: white;
+}
