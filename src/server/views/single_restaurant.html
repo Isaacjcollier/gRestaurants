@@ -6,14 +6,37 @@
 
 {% include './_navbar.html' %}
 
-  <div class="container">
-    {% for restaurant in restaurantz %}
+<div class="container">
+  <p>{{restaurants.name}}</p>
+  <img src="{{restaurant.picture_url}}"/>
+  <p>{{restaurants.description}}</p>
+    <p>Address:</p>
+    <p>street: {{restaurants.street}}</p>
+    <p>city: {{restaurants.city}}</p>
+    <p>state: {{restaurants.state}}</p>
+    <p>zip: {{restaurants.zip}}</p>
+    <p>Cuisine Type:{{restaurants.cuisine}}</p>
+  <div>
+    {% for review in reviews %}
+      {% for user in users %}
+        <p>{{user.first_name}}</p>
+        <p>{{user.last_name}}</p>
+      <p>{{review.user_rating}}</p>
+      <p>{{review.user_review}}</p>
+      {% endfor %}
+    {% endfor %}
+  </div>
+</div>
+
+{% include '_footer.html'%}
+
+{% endblock %}
+  <!-- <div class="container">
+    {% for restaurant in restaurants %}
     <div class="col-md-6 single-box-restaurant">
       <h2 class="special-font">{{restaurant.name}}</h2>
-      <img src="{{restaurant.picture_url}}" alt="bbq restaurant photo" style="height:350px; width:470px;" />
-      <h4>
-        {{restaurant.description}}
-      </h4>
+      <img src="{{restaurant.picture_url}}"/>
+      <h4>{{restaurant.description}}</h4>
       <img class="restaurant-map-image" src="/images/london-map.png" style="height:200px; background-color: #235;">
       <div class="company-address">
         <h4 class="special-font">Address:</h4>
@@ -29,6 +52,7 @@
       </div>
       {% endfor %}
     </div>
+  </div> -->
 
       <!-- employees -->
       <!-- <table>
@@ -49,20 +73,11 @@
       </table> -->
 
     <!-- reviews go here -->
-    <div class="col-md-6">
-      {% for restaurant in restaurantz %}
+    <!-- <div class="col-md-6">
+      {% for review in reviews %}
       <div class="single-box-review">
-        <h3>User Name :review rating {{restaurant.user_rating}}</h3>
-        <p>
-          {{restaurant.user_review}}
-        </p>
+        <h3>User Rating:{{review.user_rating}}</h3>
+        <h3>User Review:{{review.user_review}}</h3>
       </div>
       {% endfor %}
-    </div>
-  </div>
-    </div>
-  </div>
-
-{% include '_footer.html'%}
-
-{% endblock %}
+    </div> -->

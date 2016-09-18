@@ -158,22 +158,75 @@ router.post('/new', validation.checkValidation, (req, res, next) => {
 //   });
 // });
 
-router.get('/:id', (req, res, next) => {
-  const restaurantId = parseInt(req.params.id);
-  knex('restaurants')
-  .join('join_reviews_restaurants','join_reviews_restaurants.restaurant_id', 'restaurants.id')
-  .join('reviews', 'reviews.id', 'join_reviews_restaurants.review_id')
-  .select('*')
-  .where('restaurant_id', restaurantId)
-  // [{ a: 3, b: 10 }, { a: 3, b: 114 }] >> { a: 3, b: [10, 114] }
-  .then((results) => {
-    console.log(results);
-    const singleRestaurantObject = {};
+// knex('restaurants')
+// .join('join_reviews_restaurants','join_reviews_restaurants.restaurant_id', 'restaurants.id')
+// .join('reviews', 'reviews.id', 'join_reviews_restaurants.review_id')
+// .select('*')
+// .where('restaurant_id', restaurantId)
 
-    singleRestaurantObject.restaurantz = results;
+router.get('/:id', (req, res, next) => {
+  const id = parseInt(req.params.id);
+  let findRestaurant = knex('restaurants').where('restaurants.id', id).first();
+  let findReviews = knex('reviews').where('reviews.restaurant_id', id);
+  let findUsers = knex('reviews').where('reviews.restaurant_id', id).join('users', 'users.id', 'reviews.user_id').select('users.id', 'users.first_name', 'users.last_name');
+  Promise.all([
+    findRestaurant,
+    findReviews,
+    findUsers
+  ])
+  .then((results) => {
+    const singleRestaurantObject = {};
+    singleRestaurantObject.restaurants = results[0];
+    singleRestaurantObject.reviews = results[1];
+    singleRestaurantObject.users = results[2];
+    console.log(typeof singleRestaurantObject.restaurants);
+    console.log(singleRestaurantObject.restaurants, '?restaurants?');
+    console.log(typeof singleRestaurantObject.reviews);
+    console.log(singleRestaurantObject.reviews, '?reviews?');
+    console.log(typeof singleRestaurantObject.users);
+    console.log(singleRestaurantObject.users, '?users?');
     res.render('single_restaurant', singleRestaurantObject);
   });
 });
+
+// const id = parseInt(req.params.id);
+//   let findRestaurant = knex('restaurants').where('restaurants.id', id).first();
+//   let findReviews = knex('reviews').where('reviews.rest_id', id);
+//   let findUsers =
+//   knex('reviews').where('reviews.rest_id', id).join('users', 'users.id', 'reviews.user_id').select('users.id', 'users.first_name', 'users.last_name');
+//
+//   Promise.all([
+//     findRestaurant,
+//     findReviews,
+//     findUsers
+//   ])
+//   .then((results) => {
+//
+//     const renderObject = {};
+//     let restRating = 0;
+//     renderObject.restaurants = results[0];
+//     renderObject.reviews = results[1];
+//     renderObject.users = results[2];
+//
+// const reviews = [];
+// Object.keys(results).map(key => {
+//   reviews.push(results[key].user_review);
+// });
+// singleRestaurantObject.reviews = reviews;
+// knex('cocktails') // 1
+// .then(cocktails => { // 2
+//
+//   let promises = cocktails.map(cocktail => {
+//     return knex('glasses').where({id: cocktail.id}).first();
+//   });
+//   return Promise.all(promises).then(glasses => { // 3
+//     glasses.forEach((glass, i) => { // 4
+//       cocktails[i].glass = glass;
+//     })
+//     return cocktails;
+//   })
+// })
+// .then(log); // 5
 
 // router.get('/view/:id', (req, res, next) => {
 //
