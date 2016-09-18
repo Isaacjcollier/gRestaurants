@@ -6,8 +6,12 @@
   <hr>
   <form name="review-form" method="POST" action="/api/v1/users">
     <div class="form-group">
-      <p class="special-font">User Name:</p>
-      <input type="text" class="form-control" placeholder="User Name" id="input_user_id" name="user_id">
+      <p class="special-font">User ID:</p>
+      <input type="text" class="form-control" id="input_user_id" name="user_id" value="{{user_id}}">
+    </div>
+    <div class="form-group">
+      <p class="special-font">Restaurant ID:</p>
+      <input type="text" class="form-control" id="input_restaurant_id" name="user_id" value="{{restaurant_id}}">
     </div>
     <div class="form-group">
       <p class="special-font">Review:</p>

@@ -6,7 +6,7 @@
     e.preventDefault();
     rating = $(this).attr('data-star');
     const starReplace = staticStar(rating);
-    // console.log(rating);
+    console.log(rating);
   });
 
   $('[name="review-form"]').on('submit', function(e) {
