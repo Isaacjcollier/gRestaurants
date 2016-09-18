@@ -23,8 +23,10 @@
         <h5 class="special-font">zip: {{restaurant.zip}}</h5>
       </div>
       <h3 class="special-font">Cuisine Type:{{restaurant.cuisine}}</h3>
-      <div class="rating rating-position">
+      <div class="rating rating-position" id="rating" value="{{restaurant.user_rating}}">
       <h3>Consumer rating</h3>
+      <div class="rating_wrap">
+      </div>
       <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
       </div>
       {% endfor %}
@@ -53,15 +55,16 @@
       {% for restaurant in restaurantz %}
       <div class="single-box-review">
         <h3>User Name :review rating {{restaurant.user_rating}}</h3>
+        {{ rating }}
+        <div class="rating_wrap2">
+        </div>
         <p>
           {{restaurant.user_review}}
         </p>
       </div>
       {% endfor %}
     </div>
-  </div>
-    </div>
-  </div>
+</div>
 
 {% include '_footer.html'%}
 

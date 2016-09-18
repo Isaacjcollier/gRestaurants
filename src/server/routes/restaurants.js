@@ -154,9 +154,8 @@ router.get('/:id', (req, res, next) => {
   .where('restaurant_id', restaurantId)
   // [{ a: 3, b: 10 }, { a: 3, b: 114 }] >> { a: 3, b: [10, 114] }
   .then((results) => {
-    console.log(results);
+    // console.log(results);
     const singleRestaurantObject = {};
-
     singleRestaurantObject.restaurantz = results;
     res.render('single_restaurant', singleRestaurantObject);
   });

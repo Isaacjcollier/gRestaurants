@@ -21,7 +21,8 @@
         <input type="hidden" value="{{restaurant.id}}" name="id">
         <div class="rating">
         <h3 class="description">some rating</h3>
-      <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+        {{restaurant.user_rating}}
+      <!-- <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span> -->
     </div>
     <button type="button" class="edit-restaurant" id="edit-restaurant" data-toggle="modal" data-target="#myModal-edit" data-image="{{restaurant.picture_url}}" data-name="{{restaurant.name}}" data-cuisine="{{restaurant.cuisine}}" data-street="{{restaurant.street}}" data-city="{{restaurant.city}}" data-state="{{restaurant.state}}" data-zipcode="{{restaurant.zip}}" data-id="{{restaurant.id}}" data-description="{{restaurant.description}}">EDIT</button>
     <button type="button" class="del-restaurant" id="delete-restaurant" data-toggle="modal" data-target="#myModal-delete" data-id="{{restaurant.id}}">DELETE</button>
