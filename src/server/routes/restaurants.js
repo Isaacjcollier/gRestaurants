@@ -130,7 +130,7 @@ router.post('/new', validation.checkValidation, (req, res, next) => {
     picture_url: picture_url
   }, '*')
   .then((results) => {
-    console.log(results);
+    // console.log(results);
     if (results.length) {
       res.redirect('/api/v1/restaurants');
     } else {
