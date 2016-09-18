@@ -9,8 +9,9 @@ function employees() { return knex('employees'); }
 
 //render restaurants view
 router.get('/', (req, res, next) => {
-  restaurants().select()
+  restaurants().select('*')
   .then((results) => {
+    console.log(results);
     //renderObject is the database data to send back
     const renderObject = {};
     //setting results equal the renderObject
@@ -130,7 +131,7 @@ router.post('/new', validation.checkValidation, (req, res, next) => {
     picture_url: picture_url
   }, '*')
   .then((results) => {
-    console.log(results);
+    // console.log(results);
     if (results.length) {
       res.redirect('/api/v1/restaurants');
     } else {
@@ -147,18 +148,27 @@ router.post('/new', validation.checkValidation, (req, res, next) => {
 });
 
 router.get('/:id', (req, res, next) => {
-  const restaurantId = parseInt(req.params.id);
-  knex('restaurants')
-  .join('join_reviews_restaurants','join_reviews_restaurants.restaurant_id', 'restaurants.id')
-  .join('reviews', 'reviews.id', 'join_reviews_restaurants.review_id')
-  .select('*')
-  .where('restaurant_id', restaurantId)
-  // [{ a: 3, b: 10 }, { a: 3, b: 114 }] >> { a: 3, b: [10, 114] }
+  const id = parseInt(req.params.id);
+  //create promises for restaurant page
+  let findRestaurant = knex('restaurants').where('restaurants.id', id).first();
+  let findReviews = knex('reviews').where('reviews.restaurant_id', id);
+  let findUsers = knex('reviews').where('reviews.restaurant_id', id).join('users', 'users.id', 'reviews.user_id').select('users.id', 'users.first_name', 'users.last_name');
+  let findEmployees = knex('employees').where('employees.restaurant_id', id);
+  //return all promises
+  Promise.all([
+    findRestaurant,
+    findReviews,
+    findUsers,
+    findEmployees
+  ])
   .then((results) => {
-    console.log(results);
+    //assign renderObject for html view
     const singleRestaurantObject = {};
-
-    singleRestaurantObject.restaurantz = results;
+    singleRestaurantObject.restaurants = results[0];
+    singleRestaurantObject.reviews = results[1];
+    singleRestaurantObject.users = results[2];
+    singleRestaurantObject.employees = results[3];
+    console.log(singleRestaurantObject.employees);
     res.render('single_restaurant', singleRestaurantObject);
   });
 });

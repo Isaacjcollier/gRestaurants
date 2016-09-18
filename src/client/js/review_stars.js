@@ -22,6 +22,9 @@
         user_rating: $user_rating,
         user_review: $user_review,
         user_id: $user_id
+      },
+      success:function (data) {
+        window.location = data.redirect;
       }
     });
   });
