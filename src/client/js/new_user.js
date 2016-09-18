@@ -1,7 +1,6 @@
 (function() {
 
   'use strict';
-  console.log('new_user sign up!!');
 
   $('#sign-up-modal').on('click', (event) => {
     event.preventDefault();
@@ -21,6 +20,37 @@
       data: userPayload
     })
     .done((data) => {
+      //toggle modal off when complete
+      $('#myModal-edit').modal('toggle');
+      //reload page to show updates
+      location.reload();
+    })
+    .fail((error) => {
+      console.log(error);
+    });
+  });
+
+  $('#modal-sign-in').on('click', (event) => {
+    event.preventDefault();
+    console.log('looking to sign in');
+
+    var cookieData = [encodeURIComponent('user') + '=' + encodeURIComponent($('#signin-username').val()) + ';'];
+
+    const userPayload = {
+      username: $('#signin-username').val(),
+      password: $('#signin-password').val()
+    };
+
+    //PUT request with payload for server
+    $.ajax({
+      type: 'POST',
+      url: '/api/v1/users/sign_in',
+      data: userPayload
+    })
+    .done((result) => {
+      console.log('~~~~~~~~~~~~~');
+      //create Cookie
+      document.cookie = cookieData;
       //toggle modal off when complete
       $('#myModal-edit').modal('toggle');
       //reload page to show updates

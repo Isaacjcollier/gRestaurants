@@ -12,9 +12,10 @@ router.get('/', function (req, res, next) {
   res.render('restaurant_review');
 });
 
-router.post('/new', function (req, res, next) {
+router.post('/getuser', function (req, res, next) {
   // Hash the password with the salt
-  var hash = bcrypt.hashSync(req.body.password);
+  var salt = bcrypt.genSaltSync(10);
+  var hash = bcrypt.hashSync(req.body.password, salt);
 
   knex('users')
   .insert({
@@ -46,6 +47,61 @@ router.post('/new', function (req, res, next) {
       res.status(500);
     });
   });
+});
+
+router.post('/new', function (req, res, next) {
+  // Hash the password with the salt
+  var salt = bcrypt.genSaltSync(10);
+  var hash = bcrypt.hashSync(req.body.password, salt);
+
+  knex('users')
+  .returning('id')
+  .insert({
+    first_name: req.body.firstName,
+    last_name: req.body.lastName,
+    email: req.body.email,
+    username: req.body.userName,
+    password: hash
+  })
+  .then((results) => {
+      if (results) {
+        res.redirect('/api/v1/restaurants');
+      } else {
+        res.status(500).send({
+          status: 'error',
+          message: 'error'
+        });
+      }
+    })
+  .catch((err) => {
+      console.log(err);
+      res.status(500);
+    });
+});
+
+router.post('/sign_in', function (req, res, next) {
+
+  console.log('in the sign in');
+  console.log('username: ', req.body.username);
+  knex('users')
+  .where({
+    username: req.body.username
+  })
+  .select('password')
+  .then((results) => {
+      if (bcrypt.compareSync(req.body.password, results[0].password)) {
+        res.redirect('/api/v1/restaurants');
+      } else {
+        res.status(500).send({
+          status: 'error',
+          message: 'error'
+        });
+      }
+    })
+  .catch((err) => {
+      console.log(err);
+      res.status(500);
+    });
 });
 
 router.post('/', (req, res, next) => {
