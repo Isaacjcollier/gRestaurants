@@ -1,3 +1,5 @@
+'use strict';
+
 const express = require('express');
 const router = express.Router();
 const knex = require('../db/knex');
@@ -9,7 +11,7 @@ function employees() { return knex('employees'); }
 
 //render restaurants view
 router.get('/', (req, res, next) => {
-  let renderObject = {};
+  var renderObject = {};
   knex('reviews')
   .avg('user_rating')
   .groupBy('restaurant_id')
