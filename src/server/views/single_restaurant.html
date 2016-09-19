@@ -56,16 +56,18 @@
             <td class="employee-table-data">{{employee.role}}<td>
             <td><input type="hidden" value="{{employee.id}}" name="employee-id">
             <button type="submit" class="edit-employees" id="edit-employees" data-toggle="modal" data-target="#myModal-edit-emp"
-            data-id="{{employee.id}}" data-name="{{employee.name}}" data-role="{{employee.role}}">EDIT</button>
+            data-id="{{employee.id}}"
+            data-restaurantID="{{restaurants.id}}" data-name="{{employee.name}}" data-role="{{employee.role}}">EDIT</button>
             <button type="submit" class="delete-employees" id="delete-employees" data-toggle="modal" data-target="#myModal-del"
-            data-id="{{employee.id}}" data-name="{{employee.name}}" data-id="{{employee.id}}">DELETE</button></td>
+            data-id="{{employee.id}}" data-name="{{employee.name}}"
+            data-restaurantID="{{restaurants.id}}" data-id="{{employee.id}}">DELETE</button></td>
           </div>
         </tr>
         {% endfor %}
     </tbody>
   </table>
   <button type="submit" class="add-employee" id="add-employee" data-toggle="modal" data-target="#myModal-add-emp" data-id="{{employee.id}}" data-name="{{employee.name}}"
-  data-restaurantID={{restaurant.id}}
+  data-restaurantID={{restaurants.id}}
   data-role="{{employee.role}}">ADD</button>
 </div>
 
@@ -85,6 +87,9 @@
           </div>
           <div class="form-group">
             <input type="hidden" name="id" id="input-employee-id">
+          </div>
+          <div class="form-group">
+            <input type="hidden" name="rest_id" id="input-restaurant-id">
           </div>
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           <button type="submit" id="employee-edit-btn" class="btn btn-primary">Edit Employee</button>
@@ -127,6 +132,9 @@
           </div>
           <div class="form-group">
             <input type="hidden" name="id" id="delete-employee-id">
+          </div>
+          <div class="form-group">
+            <input type="hidden" name="rest_id" id="delete-restaurant-id">
           </div>
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           <button type="submit" id="employee-delete-btn" class="btn btn-primary">Delete Employee</button>

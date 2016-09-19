@@ -7,10 +7,6 @@
     rating = $(this).attr('data-star');
     console.log(rating);
     const starReplace = staticStar(rating);
-<<<<<<< HEAD
-=======
-    console.log(rating);
->>>>>>> master
   });
 
   $('[name="review-form"]').on('submit', function(e) {
