@@ -55,7 +55,8 @@
             <td><input type="hidden" value="{{employee.id}}" name="employee-id">
             <button type="submit" class="edit-employees" id="edit-employees" data-toggle="modal" data-target="#myModal-edit-emp"
             data-id="{{employee.id}}" data-name="{{employee.name}}" data-role="{{employee.role}}">EDIT</button>
-            <button type="submit" class="delete-employees" id="delete-employees" data-toggle="modal" data-target="#myModal-del" data-id="{{employee.id}}">DELETE</button></td>
+            <button type="submit" class="delete-employees" id="delete-employees" data-toggle="modal" data-target="#myModal-del"
+            data-id="{{employee.id}}" data-name="{{employee.name}}" data-id="{{employee.id}}">DELETE</button></td>
           </div>
         </tr>
         {% endfor %}
@@ -120,7 +121,10 @@
       <div class="modal-body">
         <form id="modal-form">
           <div class="form-group">
-            <input type="text" class="form-control" name="id" id="input-employee-delete">
+            <input type="text" class="form-control" name="id" id="delete-employee-name">
+          </div>
+          <div class="form-group">
+            <input type="hidden" name="id" id="delete-employee-id">
           </div>
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           <button type="submit" id="employee-delete-btn" class="btn btn-primary">Delete Employee</button>

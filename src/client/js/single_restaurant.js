@@ -53,11 +53,40 @@
   $(document).on('click', '#delete-employees', function(event) {
     event.preventDefault();
     console.log('delete-button works');
+
+    console.log('employee_id: ', $(this).attr('data-id'));
+
+    const $employee_id = $(this).attr('data-id');
+    const $employeeName = $(this).attr('data-name');
+
+    $('#delete-employee-id').attr('value', $employee_id);
+    $('#delete-employee-name').attr('value', $employeeName);
   });
 
   $('#employee-delete-btn').on('click', function(event) {
     event.preventDefault();
     console.log('employee-delete-btn works');
+
+    console.log($('#delete-employee-id').val());
+
+    var employee_id = $('#delete-employee-id').val();
+
+    var add_URL = 'employees/delete/' + employee_id;
+
+    $.ajax({
+      type: 'POST',
+      url: add_URL,
+      data: employee_id
+    })
+    .done((data) => {
+      //toggle modal off when complete
+      $('#myModal-edit').modal('toggle');
+      //reload page to show updates
+      location.reload();
+    })
+    .fail((error) => {
+      console.log(error);
+    });
   });
 
   $(document).on('click', '#add-employee', function(event) {

@@ -232,16 +232,15 @@ router.post('/employees/edit/:empID', (req, res, next) => {
   });
 });
 
-router.get('/:id/employees/delete/:empID', (req, res, next) => {
+router.post('/employees/delete/:empID', (req, res, next) => {
 
-      var restaurant_id = parseInt(req.params.id);
-      var employee_id = parseInt(req.params.id);
+      var employee_id = parseInt(req.params.empID);
 
       employees()
       .delete()
       .where('id', employee_id)
       .then(records => {
-          res.redirect('/api/v1/restaurants/' + restaurant_id);
+          res.redirect('/api/v1/restaurants/' + 3);
         });
     });
 
