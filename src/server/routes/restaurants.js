@@ -11,10 +11,8 @@ function employees() { return knex('employees'); }
 router.get('/', (req, res, next) => {
   restaurants().select('*')
   .then((results) => {
-    console.log(results);
-    //renderObject is the database data to send back
     const renderObject = {};
-    //setting results equal the renderObject
+    //setting results equal the renderObject;
     renderObject.restaurants = results;
     //render html page and renderObject on GET request
     res.render('restaurant_pages', renderObject);
@@ -241,7 +239,7 @@ router.post('/employees/delete/:empID', (req, res, next) => {
       .delete()
       .where('id', employee_id)
       .then(records => {
-          res.redirect('/api/v1/restaurants/' + restaurant_id);
+          res.redirect('/api/v1/restaurants/' + req.body.restaurant_id);
         });
     });
 

@@ -12,7 +12,7 @@
     const $employee_id = $(this).attr('data-id');
     const $employeeName = $(this).attr('data-name');
     const $employeeRole = $(this).attr('data-role');
-    const $restaurant_id = $(this).attr('data-restaurantID')
+    const $restaurant_id = $(this).attr('data-restaurantID');
 
     $('#input-employee-id').attr('value', $employee_id);
     $('#input-employee-name').attr('value', $employeeName);
@@ -61,9 +61,11 @@
 
     const $employee_id = $(this).attr('data-id');
     const $employeeName = $(this).attr('data-name');
+    const $restaurant_id = $(this).attr('data-restaurantID');
 
     $('#delete-employee-id').attr('value', $employee_id);
     $('#delete-employee-name').attr('value', $employeeName);
+    $('#delete-restaurant-id').attr('value', $restaurant_id);
   });
 
   $('#employee-delete-btn').on('click', function(event) {
@@ -74,12 +76,19 @@
 
     var employee_id = $('#delete-employee-id').val();
 
+    var restaurant_id = $('#delete-restaurant-id').val();
+
+    const payload = {
+      id: $('#delete-employee-id').val(),
+      restaurant_id: $('#delete-restaurant-id').val()
+    };
+
     var add_URL = 'employees/delete/' + employee_id;
 
     $.ajax({
       type: 'POST',
       url: add_URL,
-      data: employee_id
+      data: payload
     })
     .done((data) => {
       //toggle modal off when complete
