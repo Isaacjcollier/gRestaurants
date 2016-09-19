@@ -7,6 +7,7 @@
 {% include './_navbar.html' %}
 
 <div class="row">
+
 {% for restaurant in restaurants %}
   <div class="col-4 box">
     <p class="restaurant-title"><a href="/api/v1/restaurants/{{restaurant.id}}">{{restaurant.name}}</a></p>
@@ -21,7 +22,6 @@
         <input type="hidden" value="{{restaurant.id}}" name="id">
         <div class="rating">
         <h3 class="description">some rating</h3>
-        {{restaurant.user_rating}}
       <!-- <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span> -->
     </div>
     <button type="button" class="edit-restaurant" id="edit-restaurant" data-toggle="modal" data-target="#myModal-edit" data-image="{{restaurant.picture_url}}" data-name="{{restaurant.name}}" data-cuisine="{{restaurant.cuisine}}" data-street="{{restaurant.street}}" data-city="{{restaurant.city}}" data-state="{{restaurant.state}}" data-zipcode="{{restaurant.zip}}" data-id="{{restaurant.id}}" data-description="{{restaurant.description}}">EDIT</button>
@@ -29,7 +29,10 @@
   </div>
 {% endfor %}
 </div>
-
+<!-- to show average
+{% for avg in rating %}
+  {{avg.avg}}
+{% endfor %} -->
 <!-- update restaurant modal -->
 <div class="modal fade" id="myModal-edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
