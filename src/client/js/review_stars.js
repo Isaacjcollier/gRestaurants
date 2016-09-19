@@ -5,8 +5,12 @@
   $(document).on('click', '.star', function (e) {
     e.preventDefault();
     rating = $(this).attr('data-star');
-    const starReplace = staticStar(rating);
     console.log(rating);
+    const starReplace = staticStar(rating);
+<<<<<<< HEAD
+=======
+    console.log(rating);
+>>>>>>> master
   });
 
   $('[name="review-form"]').on('submit', function(e) {

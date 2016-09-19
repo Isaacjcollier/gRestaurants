@@ -9,15 +9,24 @@ function employees() { return knex('employees'); }
 
 //render restaurants view
 router.get('/', (req, res, next) => {
-  restaurants().select('*')
-  .then((results) => {
-    console.log(results);
-    //renderObject is the database data to send back
-    const renderObject = {};
-    //setting results equal the renderObject
-    renderObject.restaurants = results;
-    //render html page and renderObject on GET request
-    res.render('restaurant_pages', renderObject);
+  let renderObject = {};
+  knex('reviews')
+  .avg('user_rating')
+  .groupBy('restaurant_id')
+  .select('restaurant_id')
+  .then((rating) => {
+    renderObject.rating = rating;
+    restaurants()
+    .select('*')
+    .then((results) => {
+      // console.log(results);
+      //renderObject is the database data to send back
+      //setting results equal the renderObject
+      renderObject.restaurants = results;
+      //render html page and renderObject on GET request
+      // console.log(renderObject.rating);
+      res.render('restaurant_pages', renderObject);
+    });
   });
 });
 
@@ -109,7 +118,7 @@ router.get('/new', (req, res, next) => {
 //post restaurant new
 router.post('/new', validation.checkValidation, (req, res, next) => {
 
-  console.log(req.body);
+  // console.log(req.body);
 
   const name = req.body.name;
   const street = req.body.street;

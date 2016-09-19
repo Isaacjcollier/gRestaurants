@@ -32,6 +32,8 @@
     {% for review in reviews %}
     <div class="col-md-6 single-box-review">
       <p>{{review.user_rating}}</p>
+      <div class="rating_wrap2" id="rating" value="{{review.user_rating}}">
+      </div>
       <p>{{review.user_review}}</p>
     </div>
   {% endfor %}
