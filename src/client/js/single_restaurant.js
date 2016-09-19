@@ -12,24 +12,27 @@
     const $employee_id = $(this).attr('data-id');
     const $employeeName = $(this).attr('data-name');
     const $employeeRole = $(this).attr('data-role');
+    const $restaurant_id = $(this).attr('data-restaurantID')
 
     $('#input-employee-id').attr('value', $employee_id);
     $('#input-employee-name').attr('value', $employeeName);
     $('#input-employee-role').attr('value', $employeeRole);
+    $('#input-restaurant-id').attr('value', $restaurant_id);
   });
 
   $('#employee-edit-btn').on('click', function(event) {
     event.preventDefault();
     console.log('employee-edit-btn works');
 
-    console.log($('#input-employee-id').val());
+    var restaurant = $('#input-restaurant-id').val();
 
     var employee_id = $('#input-employee-id').val();
 
     const payload = {
       name: $('#input-employee-name').val(),
       role: $('#input-employee-role').val(),
-      id: $('input-employee-id').val()
+      id: $('input-employee-id').val(),
+      restaurant_id: restaurant
     };
 
     var add_URL = 'employees/edit/' + employee_id;
@@ -92,6 +95,7 @@
   $(document).on('click', '#add-employee', function(event) {
     event.preventDefault();
     console.log('add-button works');
+    //this isn't needed as the HTML pops up the modal form.
   });
 
   $('#employee-add-btn').on('click', function(event) {

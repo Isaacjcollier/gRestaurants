@@ -202,6 +202,7 @@ router.post('/employees/new/:id', (req, res, next) => {
     .insert(employee)
     .then(records => {
       console.log('inserted employee!');
+      res.redirect('/api/v1/restaurants/' + req.params.id);
     })
     .catch((err) => {
       console.log(err);
@@ -212,12 +213,11 @@ router.post('/employees/new/:id', (req, res, next) => {
 router.post('/employees/edit/:empID', (req, res, next) => {
 
   var employee_id = parseInt(req.params.empID);
-
   var employee = {
     name: req.body.name,
     role: req.body.role
   };
-
+  console.log('restaurant', req.body.restaurant_id);
   console.log('employee edit: ', employee);
 
   employees()
@@ -225,6 +225,7 @@ router.post('/employees/edit/:empID', (req, res, next) => {
   .where('id', employee_id)
   .then(records => {
     console.log('updated employee!');
+    res.redirect('/api/v1/restaurants/' + req.body.restaurant_id);
   })
   .catch((err) => {
     console.log(err);
@@ -240,7 +241,7 @@ router.post('/employees/delete/:empID', (req, res, next) => {
       .delete()
       .where('id', employee_id)
       .then(records => {
-          res.redirect('/api/v1/restaurants/' + 3);
+          res.redirect('/api/v1/restaurants/' + restaurant_id);
         });
     });
 
