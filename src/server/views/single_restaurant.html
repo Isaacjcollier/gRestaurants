@@ -53,13 +53,13 @@
             <td class="employee-table-data">{{employee.role}}<td>
             <td><input type="hidden" value="{{employee.id}}" name="employee-id">
             <button type="submit" class="edit-employees" id="edit-employees" data-toggle="modal" data-target="#myModal-edit-emp" data-id="{{employee.id}}" data-name="{{employee.name}}" data-role="{{employee.role}}">EDIT</button>
-            <button type="submit" class="delete-employees" id="delete-employees" data-toggle="modal" data-target="#myModal-del" data-id="{{employee.id}}">DELETE</button></td>
+            <button type="submit" class="delete-employees" id="delete-employees" data-toggle="modal" data-target="#myModal-del" data-delete-id="{{employee.id}}">DELETE</button></td>
           </div>
         </tr>
         {% endfor %}
     </tbody>
   </table>
-  <button type="submit" class="add-employee" id="add-employee" data-toggle="modal" data-target="#myModal-add-emp" data-id="{{employee.id}}" data-name="{{employee.name}}" data-role="{{employee.role}}">ADD</button>
+  <button type="submit" class="add-employee" id="add-employee" data-toggle="modal" data-target="#myModal-add-emp" data-add-id="{{employee.id}}" data-name="{{employee.name}}" data-role="{{employee.role}}">ADD</button>
 </div>
 
 <!-- edit employee modal -->
@@ -78,7 +78,9 @@
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           <button type="submit" id="employee-edit-btn" class="btn btn-primary">Edit Employee</button>
         </form>
+      </div>
     </div>
+  </div>
 </div>
 <!-- end edit modal -->
 
