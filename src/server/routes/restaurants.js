@@ -168,7 +168,6 @@ router.get('/:id', (req, res, next) => {
     singleRestaurantObject.reviews = results[1];
     singleRestaurantObject.users = results[2];
     singleRestaurantObject.employees = results[3];
-    console.log(singleRestaurantObject.employees);
     res.render('single_restaurant', singleRestaurantObject);
   });
 });
@@ -191,54 +190,57 @@ router.get('/view/:id', (req, res, next) => {
 
 // EMPLOYEES ROUTES
 
-router.post('/:id/employees/new', (req, res, next) => {
+router.post('/employees/new/:id', (req, res, next) => {
 
-  var restaurant_id = parseInt(req.params.id);
+    var employee = {
+      name: req.body.name,
+      role: req.body.role,
+      restaurant_id: parseInt(req.params.id)
+    };
+
+    employees()
+    .insert(employee)
+    .then(records => {
+      console.log('inserted employee!');
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500);
+    });
+  });
+
+router.post('/employees/edit/:empID', (req, res, next) => {
+
+  var employee_id = parseInt(req.params.empID);
 
   var employee = {
     name: req.body.name,
     role: req.body.role
   };
 
-  employees()
-  .insert()
-  .where('id', restaurant_id)
-  .then(records => {
+  console.log('employee edit: ', employee);
 
-    res.render('Restaurant', {
-      title: 'Restaurant',
-      restaurant: records[0]
-    });
+  employees()
+  .update(employee)
+  .where('id', employee_id)
+  .then(records => {
+    console.log('updated employee!');
+  })
+  .catch((err) => {
+    console.log(err);
+    res.status(500);
   });
 });
 
-router.get('/:id/employees/edit/:empID', (req, res, next) => {
+router.post('/employees/delete/:empID', (req, res, next) => {
 
-  var restaurant_id = parseInt(req.params.id);
-  var employee_id = parseInt(req.params.id);
-
-  // employees()
-  // .select()
-  // .where('id', employee_id)
-  // .then(records => {
-  //
-  //   res.render('Restaurant', {
-  //     title: 'Restaurant',
-  //     restaurant: records[0]
-  //   });
-  // });
-});
-
-router.get('/:id/employees/delete/:empID', (req, res, next) => {
-
-      var restaurant_id = parseInt(req.params.id);
-      var employee_id = parseInt(req.params.id);
+      var employee_id = parseInt(req.params.empID);
 
       employees()
       .delete()
       .where('id', employee_id)
       .then(records => {
-          res.redirect('/api/v1/restaurants/' + restaurant_id);
+          res.redirect('/api/v1/restaurants/' + 3);
         });
     });
 
