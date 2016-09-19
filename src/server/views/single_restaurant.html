@@ -10,6 +10,7 @@
   <div class="col-md-6 single-box-restaurant">
     <h2 class="special-font">{{restaurants.name}}</h2>
     <img src="{{restaurants.picture_url}}"/>
+    <input type="hidden" value="{{restaurants.id}}" name="id" id="single_restaurant_id">
     <h4>{{restaurants.description}}</h4>
     <img class="restaurant-map-image" src="/images/london-map.png" style="height:200px; background-color: #235;">
     <div class="company-address">
@@ -52,15 +53,21 @@
             <td class="employee-table-data">{{employee.name}}</td>
             <td class="employee-table-data">{{employee.role}}<td>
             <td><input type="hidden" value="{{employee.id}}" name="employee-id">
-            <button type="submit" class="edit-employees" id="edit-employees" data-toggle="modal" data-target="#myModal-edit-emp" data-id="{{employee.id}}" data-name="{{employee.name}}" data-role="{{employee.role}}">EDIT</button>
-            <button type="submit" class="delete-employees" id="delete-employees" data-toggle="modal" data-target="#myModal-del" data-id="{{employee.id}}">DELETE</button></td>
+            <button type="submit" class="edit-employees" id="edit-employees" data-toggle="modal" data-target="#myModal-edit-emp"
+            data-id="{{employee.id}}" data-name="{{employee.name}}" data-role="{{employee.role}}">EDIT</button>
+            <button type="submit" class="delete-employees" id="delete-employees" data-toggle="modal" data-target="#myModal-del"
+            data-id="{{employee.id}}" data-name="{{employee.name}}" data-id="{{employee.id}}">DELETE</button></td>
           </div>
         </tr>
         {% endfor %}
     </tbody>
   </table>
-  <button type="submit" class="add-employee" id="add-employee" data-toggle="modal" data-target="#myModal-add-emp" data-id="{{employee.id}}" data-name="{{employee.name}}" data-role="{{employee.role}}">ADD</button>
+  <button type="submit" class="add-employee" id="add-employee" data-toggle="modal" data-target="#myModal-add-emp" data-id="{{employee.id}}" data-name="{{employee.name}}"
+  data-restaurantID={{restaurant.id}}
+  data-role="{{employee.role}}">ADD</button>
 </div>
+
+{% include '_footer.html'%}
 
 <!-- edit employee modal -->
 <div class="modal fade" id="myModal-edit-emp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -74,11 +81,15 @@
           <div class="form-group">
             <input type="text" class="form-control" name="employee-role" id="input-employee-role">
           </div>
-          <input type="hidden" name="id" id="input-employee-id">
+          <div class="form-group">
+            <input type="hidden" name="id" id="input-employee-id">
+          </div>
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           <button type="submit" id="employee-edit-btn" class="btn btn-primary">Edit Employee</button>
         </form>
     </div>
+</div>
+</div>
 </div>
 <!-- end edit modal -->
 
@@ -89,10 +100,10 @@
       <div class="modal-body">
         <form id="modal-form">
           <div class="form-group">
-            <input type="text" class="form-control" name="id" id="input-new-emp-name" placeholder="New Employee Name">
+            <input type="text" class="form-control" name="newName" id="input-new-emp-name" placeholder="New Employee Name">
           </div>
           <div class="form-group">
-            <input type="text" class="form-control" name="id" id="input-new-emp-role" placeholder="New Employee Role">
+            <input type="text" class="form-control" name="newRole" id="input-new-emp-role" placeholder="New Employee Role">
           </div>
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           <button type="submit" id="employee-add-btn" class="btn btn-primary">Add Employee</button>
@@ -110,7 +121,10 @@
       <div class="modal-body">
         <form id="modal-form">
           <div class="form-group">
-            <input type="text" class="form-control" name="id" id="input-employee-delete">
+            <input type="text" class="form-control" name="id" id="delete-employee-name">
+          </div>
+          <div class="form-group">
+            <input type="hidden" name="id" id="delete-employee-id">
           </div>
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           <button type="submit" id="employee-delete-btn" class="btn btn-primary">Delete Employee</button>
@@ -120,7 +134,5 @@
   </div>
 </div>
 <!-- end delete modal -->
-
-{% include '_footer.html'%}
 
 {% endblock %}
