@@ -5,6 +5,7 @@ const genres = require('../genres.json');
 const validation = require('./validation');
 
 function restaurants() { return knex('restaurants'); }
+function employees() { return knex('employees'); }
 
 //render restaurants view
 router.get('/', (req, res, next) => {
@@ -176,9 +177,80 @@ router.get('/:id', (req, res, next) => {
     singleRestaurantObject.reviews = results[1];
     singleRestaurantObject.users = results[2];
     singleRestaurantObject.employees = results[3];
-    console.log(singleRestaurantObject.employees);
     res.render('single_restaurant', singleRestaurantObject);
   });
 });
+
+router.get('/view/:id', (req, res, next) => {
+
+  var restaurant_id = parseInt(req.params.id);
+
+  restaurants()
+  .select()
+  .where('id', restaurant_id)
+  .then(records => {
+
+    res.render('Restaurant', {
+      title: 'Restaurant',
+      restaurant: records[0]
+    });
+  });
+});
+
+// EMPLOYEES ROUTES
+
+router.post('/employees/new/:id', (req, res, next) => {
+
+    var employee = {
+      name: req.body.name,
+      role: req.body.role,
+      restaurant_id: parseInt(req.params.id)
+    };
+
+    employees()
+    .insert(employee)
+    .then(records => {
+      console.log('inserted employee!');
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500);
+    });
+  });
+
+router.post('/employees/edit/:empID', (req, res, next) => {
+
+  var employee_id = parseInt(req.params.empID);
+
+  var employee = {
+    name: req.body.name,
+    role: req.body.role
+  };
+
+  console.log('employee edit: ', employee);
+
+  employees()
+  .update(employee)
+  .where('id', employee_id)
+  .then(records => {
+    console.log('updated employee!');
+  })
+  .catch((err) => {
+    console.log(err);
+    res.status(500);
+  });
+});
+
+router.post('/employees/delete/:empID', (req, res, next) => {
+
+      var employee_id = parseInt(req.params.empID);
+
+      employees()
+      .delete()
+      .where('id', employee_id)
+      .then(records => {
+          res.redirect('/api/v1/restaurants/' + 3);
+        });
+    });
 
 module.exports = router;
