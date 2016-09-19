@@ -161,10 +161,10 @@ router.post('/new', validation.checkValidation, (req, res, next) => {
 router.get('/:id', (req, res, next) => {
   const id = parseInt(req.params.id);
   //create promises for restaurant page
-  let findRestaurant = knex('restaurants').where('restaurants.id', id).first();
-  let findReviews = knex('reviews').where('reviews.restaurant_id', id);
-  let findUsers = knex('reviews').where('reviews.restaurant_id', id).join('users', 'users.id', 'reviews.user_id').select('users.id', 'users.first_name', 'users.last_name');
-  let findEmployees = knex('employees').where('employees.restaurant_id', id);
+  var findRestaurant = knex('restaurants').where('restaurants.id', id).first();
+  var findReviews = knex('reviews').where('reviews.restaurant_id', id);
+  var findUsers = knex('reviews').where('reviews.restaurant_id', id).join('users', 'users.id', 'reviews.user_id').select('users.id', 'users.first_name', 'users.last_name');
+  var findEmployees = knex('employees').where('employees.restaurant_id', id);
   //return all promises
   Promise.all([
     findRestaurant,
