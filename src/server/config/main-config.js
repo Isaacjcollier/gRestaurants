@@ -39,11 +39,15 @@
     // app.use(session({
     //   secret: process.env.SECRET_KEY,
     //   resave: false,
-    //   saveUninitialized: true
+    //   saveUninitialized: true,
+    //   cookie: { secure: true }
     // }));
     app.use(flash());
     app.use(express.static(path.join(__dirname, '..', '..', 'client')));
-
+    // app.use((req, res, next) => {
+    //   if (req.session) app.locals.currentUser = req.session.user;
+    //   next();
+    // });
   };
 
 })(module.exports);

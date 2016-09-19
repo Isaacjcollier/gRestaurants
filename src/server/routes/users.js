@@ -15,12 +15,11 @@ router.get('/', function (req, res, next) {
 router.post('/', (req, res, next) => {
   const user_review = req.body.user_review;
   const user_rating = req.body.user_rating;
-  const user_id = req.body.user_id;
+  console.log(req.body);
   knex('reviews')
   .insert({
     user_review: user_review,
-    user_rating: user_rating,
-    user_id: user_id
+    user_rating: user_rating
   }, '*')
   .then((results) => {
     if (results.length) {

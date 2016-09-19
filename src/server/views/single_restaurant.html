@@ -32,6 +32,8 @@
     {% for review in reviews %}
     <div class="col-md-6 single-box-review">
       <p>{{review.user_rating}}</p>
+      <div class="rating_wrap2" id="rating" value="{{review.user_rating}}">
+      </div>
       <p>{{review.user_review}}</p>
     </div>
   {% endfor %}
@@ -92,9 +94,9 @@
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           <button type="submit" id="employee-edit-btn" class="btn btn-primary">Edit Employee</button>
         </form>
+      </div>
     </div>
-</div>
-</div>
+  </div>
 </div>
 <!-- end edit modal -->
 
